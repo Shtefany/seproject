@@ -3,7 +3,7 @@ if ( !defined("__WEBSESSION__") ){
 	define("__WEBSESSION__","");
 	include("Empleado.class.php");
 
-	class WebSession{
+	class WebSession {
 
 		private $empleado;
 		private $sesion_activa;
@@ -47,13 +47,13 @@ if ( !defined("__WEBSESSION__") ){
 			}
 		}
 		
-		public function accessControl(){
+		public function accessControl(){			
 			if ( !$this->isSesionActiva() ){
 				header("location:/seproject/index.php");
 			} else {
 				$path = $this->getEmpleado()->getPath();
-				if ( !preg_match("^seproject/".$path , $_SERVER['REQUEST_URI'] ) ){
-					header("location:/seproject/index.php");
+				if ( !preg_match("#/seproject/".$path."#" , $_SERVER['REQUEST_URI'] ) ){
+					header("location:/seproject/".$path);
 				}
 			}
 		}
