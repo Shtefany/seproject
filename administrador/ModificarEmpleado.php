@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Modificar Empleado</title>
+        <link rel="stylesheet" type="text/css" href="../css/mainStyle.css" />
+        <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
+    </head>    
+    <body>
+		 <?php include("header.php"); ?>
+        <center>
+        <div id="mainDiv">
+          <nav>
+                <div class="button" onclick="redirect('GestionEmpleado.php');"><img src="../img/archive.png"  alt="Icono" class="img-icon" />Gestión Empleados</div>
+                <div class="button" onclick="redirect('GestionProducto.php');"><img src="../img/configuration2.png" alt="Icono" class="img-icon" />Gestión Productos</div>
+                <div class="button" onclick="redirect('Reportes.php');"><img src="../img/notepad.png"  alt="Icono" class="img-icon" />Solicitar Reporte</div>
+            </nav>
+            <div id="all-content">
+				
+                <h2>Modificar empleado</h2>
+
+				<form id="altaEmpleado" name="altaEmpleado">
+				<div id="content">
+
+                    <div class="box">
+                    <p>Cambie los datos a modificar</p>
+					</div>
+					<table>
+					<tr>
+                       <td>Nombre:</td>
+					   <td><input id="nombreE" name="nombreE" type="text" placeholder="Nombre del Empleado"/></td>
+					</tr>
+                    
+                    <tr>
+					  <td>CURP:</td>
+					  <td><input id="curp" name="curp" type="text" placeholder="CURP"/> </td>
+                    </tr>
+                    <tr>
+					  <td>Dirección:</td>
+					  <td><input id="dir" name="dir" type="text" placeholder="Direccion"/> </td>
+                    </tr>
+                    <tr>
+					 <td>Contraseña:</td>
+					 <td><input id="contras" name="dir" type="password" placeholder="Contraseña "/> </td>
+                    <tr>
+					</table>
+                    <div class="box">
+                            <p>Seleccione el área a la que será asignado el empleado </p>
+			                Área: <select>
+                                          <option>Compras</option>
+                                          <option>Control de Calidad</option>
+                                          <option>Inventario</option> 
+                                          <option>Producción</option>
+                                          <option>Ventas</option>
+                                  </select>
+                        </div>
+                    <div class="box">
+                        <div class="form-button" onClick="cancelarE()">Cancelar</div>
+                        <div class="form-button" onClick="validaE()">Aceptar</div>
+						
+                    </div>
+                </div>
+				</form>
+            </div>
+			
+        </div>
+        </center>
+        <footer>Elaborado por nosotros(C) 2013</footer>
+    </body>   
+</html>
+<?php include("scripts.php"); ?>
