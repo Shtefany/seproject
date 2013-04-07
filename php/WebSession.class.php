@@ -12,16 +12,20 @@ if ( !defined("__WEBSESSION__") ){
 		public function __construct()
 		{
 			session_start();
-			//if (isset($_POST["login"])){
-				$login = Empleado::iniciarSesion("PEAJ910921HDFRLN08","juan");
-				if ( $login != false ){
-					$this->empleado = $login;
-					$this->sesion_activa = true;
-				}else{
-					$this->empleado = NULL;
-					$this->sesion_activa = false;
-				}	
-			//}
+			if ( !$this->isSesionActiva() ){				
+				if (isset($_POST["login"])){
+					$usuario = $_POST["usuario"];
+					$contrasena = $_POST["contrasena"];
+					$login = Empleado::iniciarSesion($usuario,$contrasena);
+					if ( $login != false ){
+						$this->empleado = $login;
+						$this->sesion_activa = true;
+					}else{
+						$this->empleado = NULL;
+						$this->sesion_activa = false;
+					}	
+				}
+			}
 			$_SESSION["websession"] = serialize($this);
 		}
 		
@@ -32,6 +36,26 @@ if ( !defined("__WEBSESSION__") ){
 		public function getEmpleado()
 		{
 			return $this->empleado;
+		}
+		
+		public function redirect(){
+			if ( $this->isSesionActiva() ){
+				$path = $this->getEmpleado()->getPath();
+				header("location:/seproject/".$path."/index.php");
+			} else {
+				header("location:/seproject/index.php");
+			}
+		}
+		
+		public function accessControl(){
+			if ( !$this->isSesionActiva() ){
+				header("location:/seproject/index.php");
+			} else {
+				$path = $this->getEmpleado()->getPath();
+				if ( !preg_match("^seproject/".$path , $_SERVER['REQUEST_URI'] ) ){
+					header("location:/seproject/index.php");
+				}
+			}
 		}
 	}
 }

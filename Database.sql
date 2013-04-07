@@ -15,3 +15,11 @@ CREATE TABLE Producto(
 	Precio		float,
 	Receta	int
 );
+
+CREATE TABLE Area(
+	id int PRIMARY KEY AUTO_INCREMENT,
+	nombre varchar(20),
+	path varchar(20)
+);
+
+INSERT INTO Area VALUES( NULL ,"Administración","administrador");

@@ -1,0 +1,81 @@
+body{
+  background:#eff3f6;
+}
+input{ 
+	vertical-align: middle; 
+	width:220px;
+	margin-left:10px;
+}
+.boxlogin
+{
+	height:260px;
+    width:332px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin:-130px 0 0 -166px;
+}
+.boxBody
+{
+    background:#fefefe;
+    border-top:1px solid #dde0e8;
+    border-bottom:1px solid #dde0e8;
+    padding:10px 20px;
+	margin-left: 35px;
+}
+
+.boxlogin footer
+{
+    background:#eff4f6;
+    border-top:1px solid #fff;
+    padding:22px 26px;
+    overflow:hidden;
+	height:32px;
+}
+.boxlogin label
+{
+    display:block;
+    font:14px/22px Arial, Helvetica, Sans-serif;
+    margin:10px 0 0 6px;
+}
+.btnLogin
+{
+    background:#a1d8f0;
+    background:-moz-linear-gradient(top, #badff3, #7acbed);
+    background:-webkit-gradient(linear, left top, left bottom, from(#badff3), to(#7acbed));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#badff3', EndColorStr='#7acbed')";
+    border:1px solid #7db0cc !important;
+    cursor: pointer;
+    padding:11px 16px;
+    font:bold 11px/14px Verdana, Tahomma, Geneva;
+    text-shadow:rgba(0,0,0,0.2) 0 1px 0px; 
+    color:#fff;
+    float:right;
+	padding:7px 21px;
+}
+
+.boxlogin input[type=text]:focus,
+.boxlogin input[type=password]:focus,
+{
+    border:6px solid #f0f7fc;
+    -moz-box-shadow:2px 3px 3px rgba(0, 0, 0, 0.04) inset, 0 0 1px #0d6db6 inset;
+    -webkit-box-shadow:2px 3px 3px rgba(0, 0, 0, 0.04) inset, 0 0 1px #0d6db6 inset;
+    box-shadow:2px 3px 3px rgba(0, 0, 0, 0.04) inset, 0 0 1px #0d6db6 inset;
+	color:#333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

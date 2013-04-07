@@ -29,6 +29,15 @@ if ( !defined("__EMPLEADO__") ){
 			return false;		
 		}
 		
+		public function getPath(){
+			$db = new DataConnection();
+			$result = $db->executeQuery("SELECT * FROM Area WHERE id=".$this->tipo."");	
+			if ( $dato = mysql_fetch_assoc($result) ){
+				return $dato["path"];
+			}
+			return false;		
+		}
+		
 		public function getNombre(){
 			return $this->nombre;
 		}
