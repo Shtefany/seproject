@@ -8,7 +8,6 @@ if ( !defined("__PRODUCTO__") ){
 		private $nombre;
 		private $precio;
 		private $receta;
-
 		
 		public function __construct($id,$nombre,$precio,$receta)
 		{
