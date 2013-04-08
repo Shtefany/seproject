@@ -18,13 +18,13 @@
             <div id="all-content">
 				
                 <h2>Agregar Empleado</h2>
-				<form id="altaEmpleado" name="altaEmpleado">
+				<form id="altaEmpleado" action="AgregaEmp.php"name="altaEmpleado" method ="POST">
 				<div id="content">
                     <div class="box">
 					<table>
 					<tr>
                        <td>Nombre: </td>
-					   <td><input id="nombreE" name="nombreE" type="text" placeholder="Nombre del Empleado"/></td>
+					   <td><input id="nombre" name="nombre" type="text" placeholder="Nombre del Empleado"/></td>
                     </div>
                     <tr>
 					  <td>CURP: </td>
@@ -36,12 +36,12 @@
                     </tr>
                      <tr>
 					 <td>Contraseña: </td>
-					 <td><input id="contras" name="dir" type="password" placeholder="Contraseña "/> </td>
+					 <td><input id="pass" name="pass" type="password" placeholder="Contraseña "/> </td>
                     </tr>
 					</table>
                     <div class="box">
                             <p>Seleccione el área a la que será asignado el empleado </p>
-			                Área: <select>
+			                Área: <select name="area">
                                           <option>Compras</option>
                                           <option>Control de Calidad</option>
                                           <option>Inventario</option> 
@@ -50,8 +50,8 @@
                                   </select>
                         </div>
                     <div class="box">
-						<div class="form-button" onClick="validaE()">Aceptar</div>
-                        <div class="form-button" onClick="cancelarE()">Cancelar</div>	
+						<input type="submit" class="form-button" value="Aceptar"/>
+                        <div class="form-button" onclick="redirect('GestionEmpleado.php')">Cancelar</div>	
                     </div>
                 </div>
 				</form>
@@ -63,3 +63,5 @@
     </body>   
 </html>
 <?php include("scripts.php"); ?>
+
+

@@ -23,7 +23,7 @@
 				<div id="content">
 				
 					<div class="box">
-						<form name="Find" action="BuscaEmpleado.php" method="POST">
+						<form name="Find" action="GestionEmpleado.php" method="POST">
 						<table>
 						
 							<tr>
@@ -44,39 +44,24 @@
 						</form>
 					</div>   
 					<div class="box">
-					<?php
-						echo ("<table id='table-content'>
-						 <tr class=tr-header'>
-						<td>idEmpleado</td>
-							<td>Nombre</td>
-							<td>Direccion</td>
-							<td>Contraseña</td>
-							<td class='opc'> </td>
-							<td class='opc'> </td>
-						 </tr>");
-						include("../php/DataConnection.class.php");
-						$db = new DataConnection();
-						$result = $db->executeQuery("SELECT * FROM Empleado");	
-
-						while($fila = mysql_fetch_array($result))
-						{	
-						$id = $fila['CURP'];	
-						$nombre = $fila['Nombre'];
-						$direccion = $fila['Direccion'];
-						$pass = $fila['Contrasena'];
-
-						echo ("<tr class='tr-cont' id='".$id."' name='".$id."'>
-							<td>".$id."</td>
-							<td>".$nombre."</td>
-							<td>".$direccion."</td>
-							<td>".$pass."</td>
-							<td class='opc'><img src='../img/pencil.png' onclick='modificarEmpleado(".$id.")' alt='Modificar' name='modificar'/></td>
-							<td class='opc'><img src='../img/less.png' onclick='eliEmp(".$id.")' alt='Eliminar' name='eliminar'/></td>
-						 </tr>");
-					
-						}
-						echo ("</table>");
-					?>
+		
+					<table id="table-content">
+								<tr class="tr-header">
+									<td>iDEmpleado</td>
+									<td>Nombre</td>
+									<td>&Aacute;rea</td>
+									<td>Direcci&oacute;n</td>
+									<td class="opc"> </td>
+								</tr>
+						<?php				
+	include("../php/Empleado.class.php");
+	$curp = $_POST['buscar'];
+	$result = Empleado::BuscaEmpleado($curp);
+	
+	
+	?>
+	
+	</table> 
 					</div>
 					
                     </div>
