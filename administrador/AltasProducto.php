@@ -19,7 +19,7 @@
             <div id="all-content">
 				
                 <h2>Registro de producto</h2>
-				<form id="altasProducto" name="altasProducto">
+				<form id="altasProducto" name="altasProducto" method="POST" action="AltasReceta.php">
 				<div id="content">
                     <div class="box">
                        Nombre:<input id="nombreP" name="nombreP" type="text" placeholder="Nombre del producto"/>
@@ -27,46 +27,13 @@
                     <div class="box">
 					   Precio:<input id="precioP" name="precioP" type="text" placeholder="Precio del producto $"/> 
                     </div>
-                    <div class="box">
-                        <h4>Receta</h4>
-                        <div class="option">
-							<select id="ingrediente" name="ingrediente" onchange="isNew()">
-								<option value="null">-</option>
-								<option value="Ingrediente1">Ingrediente Uno</option>
-								<option value="Ingrediente2">Ingrediente Dos</option>
-								<option value="Ingrediente3">Ingrediente Tres</option>
-								<option value="Nuevo">Nuevo Ingrediente</option>
-							</select></div>                                             
-                    </div>  
-                    <div class="box">
-						<table id="table-aux">
-								<tr class="tr-header">
-									<td>Ingrediente</td>
-									<td>Cantidad necesaria</td>
-									<td> </td>
-								</tr>
-								<tr class="tr-cont">
-									<td>-</td>
-									<td>-</td>
-									<td>
-										<div class="evento"><img src="../img/less.png" alt="Eliminar" name="eliminar" /></div>
-									</td>
-								</tr>
-								<tr class="tr-cont">
-									<td>-</td>
-									<td>-</td>
-									<td>
-										<div class="evento"><img src="../img/less.png" alt="Eliminar" name="eliminar"/></div>
-									</td>
-								</tr>
-						</table>
-					</div>       
-                    <div class="box">
-                        <div class="form-button" onClick="valida()">Aceptar</div>
-						<div class="form-button" onClick="cancelar()">Cancelar</div>
+					<div class="box">
+                        <div class="form-button" onClick="validaProducto()">Aceptar</div>
+						<div class="form-button" onClick="redirect('GestionProducto.php');">Cancelar</div>
                     </div>
+				</form>			
                 </div>
-				</form>
+				
             </div>
 			
         </div>

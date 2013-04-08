@@ -1,4 +1,10 @@
 ﻿<!DOCTYPE html>
+<?
+include("Clases/Producto.class.php");
+$prod = new Producto($_POST["ide"],"",0);
+$encontrado=$prod->findById();
+?>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -18,44 +24,18 @@
             <div id="all-content">
 				
                 <h2>Modificar producto</h2>
-				<form id="altasProducto" name="altasProducto">
+				<form id="altasProducto" name="altasProducto" method="POST" action="ModificarReceta.php">
+				<? echo "<input id='ide' name='ide' type='hidden' value='".$encontrado->getId()."'/>"; ?>
 				<div id="content">
                     <div class="box">
-                       Nombre:<input id="nombreP" name="nombreP" type="text" placeholder="Nombre del producto"/>
+                       Nombre:<? echo "<input id='nombreP' name='nombreP' type='text' value='".$encontrado->getNombre()."'/>"; ?>
                     </div>
                     <div class="box">
-					   Precio:<input id="precioP" name="precioP" type="text" placeholder="Precio del producto $"/> 
-                    </div>
-                    <div class="box">
-                        <h4>Receta</h4>
-                        <div class="option"><select name="ingrediente"><option value="null">-</option><option value="Ingrediente1">Ingrediente Uno</option></select></div>                                             
-                    </div>  
-                    <div class="box">
-						<table id="table-aux">
-								<tr class="tr-header">
-									<td>Ingrediente</td>
-									<td>Cantidad necesaria</td>
-									<td> </td>
-								</tr>
-								<tr class="tr-cont">
-									<td>-</td>
-									<td>-</td>
-									<td>
-										<div class="evento"><img src="../img/less.png" alt="Eliminar" name="eliminar" /></div>
-									</td>
-								</tr>
-								<tr class="tr-cont">
-									<td>-</td>
-									<td>-</td>
-									<td>
-										<div class="evento"><img src="../img/less.png" alt="Eliminar" name="eliminar"/></div>
-									</td>
-								</tr>
-						</table>
-					</div>       
+					   Precio:<? echo "<input id='precioP' name='precioP' type='text' value='".$encontrado->getPrecio()."'/>"; ?>
+                    </div>                   
                     <div class="box">
                         <div class="form-button" onClick="validaModificar()">Aceptar</div>
-						<div class="form-button" onClick="cancelar()">Cancelar</div>
+						<div class="form-button" onClick="redirect('GestionProducto.php');">Cancelar</div>
                     </div>
                 </div>
 				</form>

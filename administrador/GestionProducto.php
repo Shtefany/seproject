@@ -36,99 +36,37 @@
 						</table>
 					</div>   
 					<div class="divTable">
-						<table id="table-content">
-								<tr class="tr-header">
-									<td>iDProducto</td>
-									<td>Nombre</td>
-									<td>Precio</td>
-									<td>Receta</td>
-									<td class="opc"> </td>
-								</tr>
-								<tr class="tr-cont">
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td class="opc">
-										<img src="../img/pencil.png" onclick="redirect('ModificarProducto.php');" alt="Modificar" name="modificar"/>
-									</td>
-                                    <td class="opc">	
-                                        <form><img src="../img/less.png" alt="Eliminar" name="eliminar" onClick="eli()"/>
-									</td>
-								</tr>
-								<tr class="tr-cont">
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td class="opc">
-										<img src="../img/pencil.png" onclick="redirect('ModificarProducto.php');" alt="Modificar" name="modificar"/>
-									</td>
-                                    <td class="opc">	
-                                        <form><img src="../img/less.png" alt="Eliminar" name="eliminar" onClick="eli()"/>
-									</td>
-								</tr>
-								<tr class="tr-cont">
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td class="opc">
-										<img src="../img/pencil.png" onclick="redirect('ModificarProducto.php');" alt="Modificar" name="modificar"/>
-									</td>
-                                    <td class="opc">	
-                                        <form><img src="../img/less.png" alt="Eliminar" name="eliminar" onClick="eli()"/>
-									</td>
-								</tr>
-								<tr class="tr-cont">
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td class="opc">
-										<img src="../img/pencil.png" onclick="redirect('ModificarProducto.php');" alt="Modificar" name="modificar"/>
-									</td>
-                                    <td class="opc">	
-                                        <form><img src="../img/less.png" alt="Eliminar" name="eliminar" onClick="eli()"/>
-									</td>
-								</tr>
-								<tr class="tr-cont">
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td class="opc">
-										<img src="../img/pencil.png" onclick="redirect('ModificarProducto.php');" alt="Modificar" name="modificar"/>
-									</td>
-                                    <td class="opc">	
-                                        <form><img src="../img/less.png" alt="Eliminar" name="eliminar" onClick="eli()"/>
-									</td>
-								</tr>
-								<tr class="tr-cont">
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td class="opc">
-										<img src="../img/pencil.png" onclick="redirect('ModificarProducto.php');" alt="Modificar" name="modificar"/>
-									</td>
-                                    <td class="opc">	
-                                        <form><img src="../img/less.png" alt="Eliminar" name="eliminar" onClick="eli()"/>
-									</td>
-								</tr>
-								<tr class="tr-cont">
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td class="opc">
-										<img src="../img/pencil.png" onclick="redirect('ModificarProducto.php');" alt="Modificar" name="modificar"/>
-									</td>
-                                    <td class="opc">	
-                                        <form><img src="../img/less.png" alt="Eliminar" name="eliminar" onClick="eli()"/>
-									</td>
-								</tr>
-						</table>
+					<?
+									echo "<table id='table-content'>";
+									echo "<tr class='tr-header'>";
+									echo	"<td>iDProducto</td>";
+									echo	"<td>Nombre</td>";
+									echo	"<td>Precio</td>";
+									echo	"<td class='opc'> </td>";
+									echo	"<td class='opc'> </td>";
+									echo  "</tr>";
+									include("../php/DataConnection.class.php");
+									$db = new DataConnection();
+									$result = $db->executeQuery("SELECT * FROM producto");	
+									
+									while($fila=mysql_fetch_array($result))
+									{										
+										$id = $fila['idProducto'];										
+										$nombre = $fila['Nombre'];
+										$precio = $fila['Precio'];
+										
+										echo "<tr class='tr-cont' id='".$id."' name='".$id."'>";
+										echo	"<td>".$id."</td>";
+										echo	"<td>".$nombre."</td>";
+										echo	"<td>".$precio."</td>";
+										echo	"<td class='opc'><img src='../img/pencil.png' onclick='modificarProducto(".$id.")' alt='Modificar' name='modificar'/></td>";
+										echo	"<td class='opc'><img src='../img/less.png' onclick='eli(".$id.")' alt='Eliminar' name='eliminar'/></td>";
+										echo  "</tr>";
+									
+									}
+									echo "</table>"
+					?>
+								
 					</div>
 					
             </div>

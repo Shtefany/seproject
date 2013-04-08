@@ -1,20 +1,19 @@
 <?php
 if ( !defined("__PRODUCTO__") ){
 	define("__PRODUCTO__","");
-	include("DataConnection.class.php");
+	include("../php/DataConnection.class.php");
 	
 	class Producto{
 		private $id;
 		private $nombre;
 		private $precio;
-		private $receta;
+
 		
-		public function __construct($id,$nombre,$precio,$receta)
+		public function __construct($id,$nombre,$precio)
 		{
 			$this->id = $id;
 			$this->nombre = $nombre;
 			$this->precio = $precio;
-			$this->receta = $receta;
 		}
 		
 		public function getId(){
@@ -26,9 +25,7 @@ if ( !defined("__PRODUCTO__") ){
 		public function getPrecio(){
 			return $this->precio;
 		}
-		public function getReceta(){
-			return $this->nombre;
-		}
+
 		
 		public function setId($id){
 			$this->id=id;
@@ -39,29 +36,36 @@ if ( !defined("__PRODUCTO__") ){
 		public function setPrecio($precio){
 			$this->precio=precio;
 		}
-		public function setReceta($receta){
-			$this->receta=receta;
-		}
+	
 		
 		public function Agregar(){
 			$db = new DataConnection();
-			$db->executeQuery("Insert into producto (Nombre,Precio,Receta) values('".$this->$nombre."',".$this_>$precio.",".$this->$receta.") ");
+			$query="Insert into producto (Nombre,Precio) values('".$this->nombre."',".$this->precio.")";
+			$db->executeQuery($query);
+			return $db;
 		}
 		
-		public function findById(){
+		public function findByName(){
 			$db = new DataConnection();
-			$result=$db->executeQuery("Select * from producto where idProducto='".$this->$id."'");
+			$result=$db->executeQuery("Select * from producto where Nombre='".$this->nombre."'");
 			if ( $dato = mysql_fetch_assoc($result) ){
-				$productoFound = new Producto($dato["idProducto"],$dato["Nombre"],$dato["Precio"],$dato["Receta"]);
+				$productoFound = new Producto($dato["idProducto"],$dato["Nombre"],$dato["Precio"]);
 				return $productoFound;
 			}
 			return false;	
 		}
 		
-		public function Eliminar(){
+		public function findById(){
 			$db = new DataConnection();
-			$db->executeUpdate("Delete  from producto where idProducto='".$this->$id."'");
+			$result=$db->executeQuery("Select * from producto where idProducto='".$this->id."'");
+			if ( $dato = mysql_fetch_assoc($result) ){
+				$productoFound = new Producto($dato["idProducto"],$dato["Nombre"],$dato["Precio"]);
+				return $productoFound;
+			}
+			return false;	
 		}
+		
+		
 		
 			
 	}

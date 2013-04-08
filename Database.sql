@@ -21,5 +21,18 @@ CREATE TABLE Area(
 	nombre varchar(20),
 	path varchar(20)
 );
+ALTER TABLE Receta 
+ADD CONSTRAINT receta_Ingrediente 
+FOREIGN KEY (idMateriaPrima) 
+REFERENCES MateriaPrima (idMateriaPrima) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE
+
+ALTER TABLE Receta 
+ADD CONSTRAINT receta_Producto
+FOREIGN KEY (idProducto) 
+REFERENCES Producto (idProducto) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE;
 
 INSERT INTO Area VALUES( NULL ,"Administración","administrador");
