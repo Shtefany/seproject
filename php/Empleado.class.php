@@ -18,7 +18,6 @@ if ( !defined("__EMPLEADO__") ){
 			$this->tipo = $tipo;
 			$this->contrasena = $contrasena;		
 		}
-
 		
 		public static function iniciarSesion($curp,$contrasena){
 			$db = new DataConnection();
@@ -54,13 +53,10 @@ if ( !defined("__EMPLEADO__") ){
 		public function getArea(){
 			return $this->tipo;
 		}
-		public function Agregar($curp,$nombre,$password,$area,$direccion){
+		public static function Agregar($curp,$nombre,$password,$area,$direccion){
 			$db = new DataConnection();
-			$result = $db->executeQuery("SELECT id from Area WHERE nombre='".$this->tipo."'");
-			$area = mysql_fetch_assoc($result);
-			/*echo($area["id"]);*/
-			
-			if($result = $db->executeQuery("INSERT INTO Empleado (CURP,Nombre,Area,Contrasena,Direccion) VALUES('".$curp."','".$nombre."',".$area["id"].",'".$password."','".$direccion."') "))
+			$qry = "INSERT INTO Empleado (CURP,Nombre,Area,Contrasena,Direccion) VALUES('".$curp."','".$nombre."',".$area.",'".$password."','".$direccion."');";
+			if($result = $db->executeQuery($qry))
 			{
 				return true;
 			}
@@ -69,8 +65,7 @@ if ( !defined("__EMPLEADO__") ){
 		}
 		public static function findById($id)
 		{
-			$db = new DataConnection();
-			
+			$db = new DataConnection();			
 			$result = $db->executeQuery("SELECT E.CURP,E.Nombre,A.nombre,E.Direccion FROM Empleado E,Area A  where CURP LIKE'".$id."%' AND E.Area = A.id");
 			if ($dato = mysql_fetch_assoc($result)){
 			
@@ -82,10 +77,7 @@ if ( !defined("__EMPLEADO__") ){
 		public static function BuscaEmpleado($id)
 		{
 			$db = new DataConnection();
-			
 			$result = $db->executeQuery("SELECT E.CURP,E.Nombre,A.nombre,E.Direccion FROM Empleado E,Area A  where CURP LIKE'".$id."%' AND E.Area = A.id");
-		
-			
 			while($dato = mysql_fetch_assoc($result)){
 				echo('<tr class="tr-cont">
 				<td name ="id">'.$dato["CURP"].'</td>
@@ -94,17 +86,13 @@ if ( !defined("__EMPLEADO__") ){
 				<td>'.$dato["Direccion"].'</td>');	
 				include("Option.php");
 			
-		}
-		
+			}		
 		}
 		
 		public static function Eliminar($id){
-			$db = new DataConnection();
-			
+			$db = new DataConnection();			
 			return $result = $db->executeQuery("DELETE FROM Empleado WHERE CURP='".$id."'");
-		}
-		
-			
+		}	
 	}
 }
 ?>

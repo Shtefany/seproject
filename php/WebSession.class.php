@@ -43,13 +43,13 @@ if ( !defined("__WEBSESSION__") ){
 				$path = $this->getEmpleado()->getPath();
 				header("location:/seproject/".$path."/index.php");
 			} else {
-				header("location:/seproject/index.php");
+				header("location:/seproject/index.php?error=1");
 			}
 		}
 		
 		public function accessControl(){			
 			if ( !$this->isSesionActiva() ){
-				header("location:/seproject/index.php");
+				header("location:/seproject/index.php?error=1");
 			} else {
 				$path = $this->getEmpleado()->getPath();
 				if ( !preg_match("#/seproject/".$path."#" , $_SERVER['REQUEST_URI'] ) ){

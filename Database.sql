@@ -16,17 +16,25 @@ CREATE TABLE Producto(
 	Receta	int
 );
 
+CREATE TABLE Receta(
+  idProducto    int NOT NULL,
+  idMateriaPrima  int NOT NULL,
+  Cantidad    float,
+  primary key(idProducto,idMateriaPrima)
+);
+
 CREATE TABLE Area(
 	id int PRIMARY KEY AUTO_INCREMENT,
 	nombre varchar(20),
 	path varchar(20)
 );
+
 ALTER TABLE Receta 
 ADD CONSTRAINT receta_Ingrediente 
 FOREIGN KEY (idMateriaPrima) 
 REFERENCES MateriaPrima (idMateriaPrima) 
 ON DELETE CASCADE 
-ON UPDATE CASCADE
+ON UPDATE CASCADE;
 
 ALTER TABLE Receta 
 ADD CONSTRAINT receta_Producto

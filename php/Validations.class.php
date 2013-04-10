@@ -31,7 +31,16 @@ if ( !defined("__VALIDATIONS__") ){
 		} 
 		
 		public static function validaCURP($string){
-			
+			$valor = str_replace("-", "", $string); 
+			$letras = substr($valor,0,4);
+			$fecha  = substr($valor,4,6);
+			$estado = substr($valor,10,6);
+			$clave1  = substr($valor,16,1);
+			$clave2  = substr($valor,17,1);
+			if (ctype_alpha($letras) && ctype_alpha($estado) && ctype_digit($fecha) && ctype_alnum($clave1) && ctype_digit($clave2) ){
+				return true;
+			}
+			return false;
 		}
 		
 		public static function validaEmail($string){
@@ -39,7 +48,7 @@ if ( !defined("__VALIDATIONS__") ){
 		}
 		
 		public static function validaNombre($string){
-			return preg_match("/^[¡…Õ”⁄·ÈÌÛ˙A-Za-z ]+$/" , $string ) ? true: false;
+			return preg_match("/^[^\d]+$/" , $string ) ? true: false;
 		}
 		
 	}

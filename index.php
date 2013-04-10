@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Iniciar Sesión</title>
+<title>Iniciar Sesiï¿½n</title>
 <link rel="stylesheet" type="text/css" href="css/sesion.css" />
 </head>
 
@@ -10,13 +10,13 @@
 	<div class="boxBody">
 	  <label>Usuario</label>
 	  <input type="text" tabindex="1" placeholder="Usuario" name="usuario"/>
-	  <label>Contraseña</label>
+	  <label>ContraseÃ±a</label>
 	  <input type="password" tabindex="2" name="contrasena"/>
 	  <input type="hidden" name="login" />
 	</div>
 	<footer>
 	<div class="btnLogin" onClick="document.login.submit();">
-	  Iniciar Sesión
+	  Iniciar Sesiï¿½n
 	</div>
 	</footer>
 </form>

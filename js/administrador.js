@@ -1,1 +1,5 @@
-setColors(document, "#F5A9F2", "#F781F3","#FA58AC");
+setColors(document, "#FFDFFF", "#FFA4FF","#FF86FF");
+
+function rePaint(){
+	setColors(document, "#FFDFFF", "#FFA4FF","#FF86FF");
+}

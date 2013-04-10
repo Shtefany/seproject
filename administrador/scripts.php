@@ -1,6 +1,8 @@
 <!-- scripts -->
 <script type="text/javascript" src="../js/color.js"></script>
 <script type="text/javascript" src="../js/administrador.js"></script>
+<script type="text/javascript" src="../js/ajax.js"></script>
+<script type="text/javascript" src="../js/validaciones.js"></script>
 <script type="text/javascript">
 	window.onload = initialize;
 	window.onresize = function () { resizeWindow(document) };
@@ -52,7 +54,6 @@ function validarReporte()
 		{
 			window.location='ReporteVentas.php'
 		}
-		
 	}
 	
 	

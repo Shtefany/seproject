@@ -59,10 +59,9 @@
                                           <option>Ventas</option>
                                   </select>
                         </div>
-                    <div class="box">
-                        <div class="form-button" onClick="cancelarE()">Cancelar</div>
+                    <div class="box">                        
                         <div class="form-button" onClick="ModEmp()">Aceptar</div>
-						
+						<div class="form-button" onClick="cancelarE()">Cancelar</div>
                     </div>
                 </div>
 				</form>
