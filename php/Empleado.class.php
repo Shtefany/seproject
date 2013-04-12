@@ -61,34 +61,27 @@ if ( !defined("__EMPLEADO__") ){
 				return true;
 			}
 			return false;
-			
 		}
+		
+		public static function Modificar($curp,$nombre,$area,$direccion){
+			$db = new DataConnection();
+			$qry = "UPDATE Empleado SET Nombre='".$nombre."', Area=".$area." ,Direccion='".$direccion."' WHERE CURP='".$curp."'";
+			if($result = $db->executeQuery($qry))
+				return true;
+			return false;
+		}
+		
 		public static function findById($id)
 		{
 			$db = new DataConnection();			
-			$result = $db->executeQuery("SELECT E.CURP,E.Nombre,A.nombre,E.Direccion FROM Empleado E,Area A  where CURP LIKE'".$id."%' AND E.Area = A.id");
+			$result = $db->executeQuery("SELECT * FROM Empleado WHERE CURP='".$id."'");
 			if ($dato = mysql_fetch_assoc($result)){
-			
 				$emp = new Empleado($dato["CURP"],$dato["Nombre"],$dato["Direccion"],$dato["Area"],$dato["Contrasena"]);
 				return $emp;
 			}	
 			return false;
 		}
-		public static function BuscaEmpleado($id)
-		{
-			$db = new DataConnection();
-			$result = $db->executeQuery("SELECT E.CURP,E.Nombre,A.nombre,E.Direccion FROM Empleado E,Area A  where CURP LIKE'".$id."%' AND E.Area = A.id");
-			while($dato = mysql_fetch_assoc($result)){
-				echo('<tr class="tr-cont">
-				<td name ="id">'.$dato["CURP"].'</td>
-				<td>'.$dato["Nombre"].'</td>
-				<td>'.$dato["nombre"].'</td>
-				<td>'.$dato["Direccion"].'</td>');	
-				include("Option.php");
-			
-			}		
-		}
-		
+				
 		public static function Eliminar($id){
 			$db = new DataConnection();			
 			return $result = $db->executeQuery("DELETE FROM Empleado WHERE CURP='".$id."'");

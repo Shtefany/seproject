@@ -31,6 +31,7 @@ if ( !defined("__VALIDATIONS__") ){
 		} 
 		
 		public static function validaCURP($string){
+			if ( strlen($string) != 18 ) return false;
 			$valor = str_replace("-", "", $string); 
 			$letras = substr($valor,0,4);
 			$fecha  = substr($valor,4,6);

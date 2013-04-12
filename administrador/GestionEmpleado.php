@@ -1,4 +1,12 @@
-﻿<?php include("../php/AccessControl.php"); ?>
+﻿<!--
+	GestionEmpleado.php
+	Última modificación: 11/04/2013
+	
+	Pantalla principal de la gestión de empleados
+	
+	- Documentación del código: OK
+-->
+<?php include("../php/AccessControl.php"); ?>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -20,56 +28,47 @@
 				<div id="content">
 					<h2>Gestión de Empleados</h2>
 					<div class="box">
-						<table>
-							<tr>
-								<td class="auxiliarB">
-									<div onclick="redirect('AgregarEmpleado.php');" class="form-button">Agregar Empleado</div>
-								</td>
-								<td class="auxiliarB"></td>
-								<td class="auxiliarB"></td>
-								<td class="auxiliarB">
-									<input type="text" id="buscar" name="buscar" placeholder = "Buscar en los empleados" class="searchBar"/>
-								</td>
-								<td>
-									<img src="../img/busc.png" class="img-buscar"  alt="Buscar" onClick="onClickBusqueda();"/>
-								</td>
-							</tr>
-
-						</table>
+						<div onclick="redirect('AgregarEmpleado.php');" class="form-button">Agregar Empleado</div>
+						<input type="text" id="buscar" name="buscar" placeholder = "Buscar en los empleados" class="searchBar" style="width:250px;"/>
+						<img src="../img/busc.png" class="img-buscar"  alt="Buscar" onClick="onClickBusqueda();"/>
 					</div>   
 					<div id="tablaEmpleado" class="box">
 						<?php include("TablaEmpleados.php"); ?>
 					</div>
-					
-                    </div>
                 </div>
-            </div>
+                </div>
+		</div>
 			
-        </div>
-        </center>
-        <footer>Elaborado por nosotros(C) 2013</footer>
+	</div>
+    </center>
+    <footer>Elaborado por nosotros(C) 2013</footer>
     </body>   
 </html>
 <?php include("scripts.php"); ?>
 <script type="text/javascript">
+	/* Genera la tabla de empleados */
 	function onClickBusqueda(){
 		loadTable();
 	}
-
+	
+	/*Redirige a la pagina de modificar empleado*/
 	function modificarEmpleado(id){
-		
-	}
-
-	function eliminarEmpleado(id){
-		sendPetitionQuery("EliminaEmpleado.php?id=" + id );
-		alert("Empleado eliminado");
-		loadTable();
+		redirect("AgregarEmpleado.php?id=" + id);
 	}
 	
+	/*Confirma y elimina el empleado*/
+	function eliminarEmpleado(id){
+		if ( confirm("¿Seguro que desea eliminar al empleado con CURP " + id +"?") ){
+			sendPetitionQuery("EliminaEmpleado.php?id=" + id );
+			alert("Empleado eliminado");
+			loadTable();
+		}
+	}
+
+	/*Carga la tabla de empleado de acuerdo al filtro de busqueda*/
 	function loadTable(){
 		filtro = document.getElementById('buscar').value;
 		sendPetitionSync("TablaEmpleados.php?search=" + filtro ,"tablaEmpleado",document);
 		rePaint();
-	}
-	
+	}	
 </script>

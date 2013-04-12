@@ -1,7 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php include("../php/AccessControl.php"); ?>
+<!DOCTYPE html>
 <?php
 	include("../php/Empleado.class.php");
-	$emp = $_POST["ide"];
+	$emp = $_GET["id"];
 	$encontrado = Empleado::findById($emp);
 ?>
 <html>
@@ -33,20 +34,20 @@
 					<table>
 					<tr>
                        <td>Nombre:</td>
-					   <td><? echo "<input id='nombreP' name='nombreP' type='text' value='".$encontrado->getNombre()."'/>"; ?></td>
+					   <td><?php echo "<input id='nombreP' name='nombreP' type='text' value='".$encontrado->getNombre()."'/>"; ?></td>
 					</tr>
                     
                     <tr>
 					  <td>CURP:</td>
-					  <td><? echo "<input id='ide' name='ide' type='hidden' value='".$encontrado->getCurp()."'/>"; ?></td>
+					  <td><?php echo "<input id='ide' name='ide' type='text' value='".$encontrado->getCurp()."'/>"; ?></td>
                     </tr>
                     <tr>
 					  <td>Dirección:</td>
-					  <td><? echo "<input id='dir' name='dir' type='text' value='".$encontrado->getDireccion()."'/>"; ?></td>
+					  <td><?php echo "<input id='dir' name='dir' type='text' value='".$encontrado->getDireccion()."'/>"; ?></td>
                     </tr>
                     <tr>
 					 <td>Contraseña:</td>
-					 <td><? echo "<input id='nombreP' name='nombreP' type='text' value='".$encontrado->getContrasena()."'/>"; ?></td>
+					 <td><?php echo "<input id='nombreP' name='nombreP' type='text' value='".$encontrado->getContrasena()."'/>"; ?></td>
                     <tr>
 					</table>
                     <div class="box">

@@ -1,7 +1,7 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
-<title>Iniciar Sesi�n</title>
+<title>Iniciar Sesión</title>
 <link rel="stylesheet" type="text/css" href="css/sesion.css" />
 </head>
 
@@ -16,7 +16,7 @@
 	</div>
 	<footer>
 	<div class="btnLogin" onClick="document.login.submit();">
-	  Iniciar Sesi�n
+	  Iniciar Sesión
 	</div>
 	</footer>
 </form>
