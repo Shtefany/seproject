@@ -1,7 +1,7 @@
 <?php
 	/*
-		TablaProducto.php
-		Última modificación: 12/04/2013		
+		TablaEmpleados.php
+		Última modificación: 11/04/2013		
 		
 		Genera la tabla de empleados dinamicamente.
 		
@@ -16,7 +16,6 @@
 	<tr class='tr-header'>
 		<td>idProducto</td>
 		<td>Nombre</td>
-		<td>Precio</td>
 		<td class='opc'> </td>
 		<td class='opc'> </td>
 	</tr>
@@ -29,7 +28,7 @@
 	// Añade parametros de búsqueda
 	if ( isset($_GET["search"] ) ){ 
 		$filtro = Validations::cleanString($_GET["search"]); // Limpia la entrada
-		$qry .= " WHERE idProducto LIKE '%".$filtro."%' OR Nombre LIKE '%".$filtro."%' OR Precio LIKE '%".$filtro."%'";
+		$qry .= " WHERE Nombre LIKE '%".$filtro."%' OR idProducto LIKE '%".$filtro."%'";
 	}
 	
 	$result = $db->executeQuery($qry);	
@@ -46,14 +45,12 @@
 		{		
 			$id = $fila['idProducto'];	
 			$nombre = $fila['Nombre'];
-			$precio = $fila['Precio'];
 
 			echo ("<tr class='tr-cont' id='".$id."' name='".$id."'>
 				<td>".$id."</td>
 				<td>".$nombre."</td>
-				<td>".$precio."</td>
-				<td class='opc'><img src='../img/pencil.png' onclick='modificarProducto(\"".$id."\")' alt='Modificar' class='clickable'/></td>
-				<td class='opc'><img src='../img/less.png'   onclick='eliminarProducto(\"".$id."\")' alt='Eliminar' class='clickable'/></td>
+				<td class='opc'><img src='../img/notepad.png' onclick='verReceta(\"".$id."\")' alt='Ver' class='clickable'/></td>
+				<td class='opc'><img src='../img/pencil.png' onclick='modificarReceta(\"".$id."\")' alt='Modificar' class='clickable'/></td>
 			</tr>");
 		}
 	}	

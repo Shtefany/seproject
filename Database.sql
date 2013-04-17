@@ -13,7 +13,6 @@ CREATE TABLE Producto(
 	idProducto		int PRIMARY KEY AUTO_INCREMENT,
 	Nombre		varchar(100),
 	Precio		float,
-	Receta	int
 );
 
 CREATE TABLE Receta(
@@ -28,6 +27,13 @@ CREATE TABLE Area(
 	nombre varchar(20),
 	path varchar(20)
 );
+
+CREATE TABLE MateriaPrima(
+	idMateriaPrima int PRIMARY KEY AUTO_INCREMENT,
+	Nombre varchar(20),
+	Unidad varchar(20)
+);
+
 
 ALTER TABLE Receta 
 ADD CONSTRAINT receta_Ingrediente 
