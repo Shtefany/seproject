@@ -52,6 +52,11 @@ if ( !defined("__VALIDATIONS__") ){
 			return preg_match("/^[^\d]+$/" , $string ) ? true: false;
 		}
 		
+		public static function validaFloat($string){
+			if (strlen($string)==0)return false;
+			return preg_match("/^[0-9]*(\.)?[0-9]*$/" , $string ) ? true: false;
+		}
+		
 	}
 }
 ?>
