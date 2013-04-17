@@ -4,8 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>Gestionar Materia Prima</title>
         <link rel="stylesheet" type="text/css" href="../css/mainStyle.css" />
-        <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
-
+        <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">     
     </head>    
     <body>
     <!-- El header es el mismo para todas las paginas-->
@@ -24,68 +23,55 @@
         <div id="mainDiv">
         <!-- Aquí se coloca el menú -->
              <nav>
-                <div class="button" onclick="redirect('gestion_ma.htm');"><img src="../img/archive.png"  alt="Icono" class="img-icon"/>Gestión de Materia Prima</div>
-                <div class="button" onclick="redirect('gestion_p.htm');"><img src="../img/archive.png"  alt="Icono" class="img-icon" />Gestión de Productos</div>
-                <div class="selected-button" onclick="redirect('ingresar_ma.htm');"><img src="../img/archive.png"  alt="Icono" class="img-icon"/>Ingresar Materia Prima</div>
+                <div class="selected-button"><img src="../img/archive.png"  alt="Icono" class="img-icon"/>Gestión de Materia Prima
+                    <ul class="sub-level" type="none">
+                        <li onclick="redirect('gestion_ma.php');">Gestión de Materia Prima</li>
+                        <li onclick="redirect('ingresar_ma.php');">Ingresar Materia Prima</li>
+
+                    </ul>
+                </div>
+                <div class="button" onclick="redirect('gestion_p.php');"><img src="../img/archive.png"  alt="Icono" class="img-icon" />Gestión de Productos</div>
                 <div class="button"><img src="../img/notepad.png"  alt="Icono" class="img-icon"/>Reportes
-				        <ul class="sub-level">
-                            <li onclick="redirect('reportes_ma.htm');">Generar Reporte Materias Primas</li>
-                            <li onclick="redirect('reportes_p.htm');">Generar Reporte de Productos</li>
+                        <ul class="sub-level" type="none">
+                            <li onclick="redirect('reportes_ma.php');">Generar Reporte Materias Primas</li>
+                            <li onclick="redirect('reportes_p.php');">Generar Reporte de Productos</li>
                         </ul>
                 </div>
             </nav>  
-            <!-- Divisor del contenido de la pagina -->
+  <!-- Divisor del contenido de la pagina -->
             <div id="all-content">
-				
-                <h2>Ingresar Materia Prima</h2>
-
                 <div id="content">
-                    <form action="procesar.php" method="post" name="frm">
-    					<div class="box">
-    						<table>
-    						<tr>
-    						   <td>Nombre: </td>
-    						   <td><input type="text" id="name" name="name" placeholder="Escriba su nombre"/></td>
-    						</tr>
+                    <h2>Gestión de Materias Primas</h2>
+                    <div class="box">
+                        <table>
+                            <tr>
+                                <td class="auxiliarB">
+                                    <div onclick="redirect('AgregarEmpleado.php');" class="form-button">Agregar Empleado</div>
+                                </td>
+                                <td class="auxiliarB"></td>
+                                <td class="auxiliarB"></td>
+                                <td class="auxiliarB">
+                                    <input type="text" id="buscar" name="buscar" placeholder = "Buscar en los empleados" class="searchBar"/>
+                                </td>
+                                <td>
+                                    <img src="../img/busc.png" class="img-buscar"  alt="Buscar" onClick="onClickBusqueda();"/>
+                                </td>
+                            </tr>
 
-    						<tr>
-    						   <td>Proveedor: </td>
-    						   <td><input type="text" id="provider" name="provider" placeholder="Escriba el proveedor"/></td>
-    						</tr>
-
-    						<tr>
-    							<td>Cantidad: </td>
-    							<td><input type="number" id="cantidad" name="cantidad" min="0" max="10000"></td>
-    						</tr>
-
-    						<tr>
-    							<td>Precio:</td>
-    							<td><input type="number" id="precio" name="precio" min="0" max="1000000"> </td>
-    						</tr>
-
-    						<tr>
-    						   <td>Fecha inicial: </td>
-    						   <td><input type="text" id="from" name="from" placeholder="yyyy-mm-dd"/></td>
-    						</tr>
-    						<tr>
-    						   <td>Fecha de caducidad: </td>
-    						   <td><input type="text" id="to" name="to" placeholder="yyyy-mm-dd"/></td> 
-    						</tr>
-    						</table>
-    					</div>
-                        <div class="box">
-                            <button name="mysubmitbutton" id="mysubmitbutton" type="submit" class="form-button">  
-                                Ingresar a Inventario
-                            </button> 
-                        </div>
-                    </form>
+                        </table>
+                    </div>   
+                    <div id="tablaMateria" class="box">
+                        <?php include("TablaMateria.php"); ?>
+                    </div>
+                    
+                    </div>                      
                 </div>
             </div>
-        </div>
         </center>
         <footer>Elaborado por nosotros(C) 2013</footer>
     </body>   
 </html>
+
 <script type="text/javascript" src="../js/color.js"></script>
 <script type="text/javascript" src="../js/inventarios.js"></script>
 <script type="text/javascript">
@@ -120,4 +106,4 @@
 <script type="text/javascript" src="../js/jquery.ui.core.js"></script>
 <script type="text/javascript" src="../js/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="../js/jquery.ui.datepicker.js"></script>
-<script type="text/javascript" src="../js/navigation.js"></script>    
+<script type="text/javascript" src="../js/navigation.js"></script>        

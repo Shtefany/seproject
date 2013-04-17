@@ -2,13 +2,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `cookies` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `cookies` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Materia_Prima`
+-- Table `cookies`.`Materia_Prima`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `mydb`.`Materia_Prima` (
+CREATE  TABLE IF NOT EXISTS `cookies`.`Materia_Prima` (
   `idMateria` INT NOT NULL AUTO_INCREMENT ,
   `Unidad` VARCHAR(45) NULL ,
   `Nombre` VARCHAR(75) NOT NULL ,
@@ -19,9 +19,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Proveedor`
+-- Table `cookies`.`Proveedor`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `mydb`.`Proveedor` (
+CREATE  TABLE IF NOT EXISTS `cookies`.`Proveedor` (
   `RFC` VARCHAR(10) NOT NULL ,
   `Nombre` VARCHAR(45) NOT NULL ,
   `Direccion` VARCHAR(100) NULL ,
@@ -32,9 +32,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Materia_Proveedor`
+-- Table `cookies`.`Materia_Proveedor`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `mydb`.`Materia_Proveedor` (
+CREATE  TABLE IF NOT EXISTS `cookies`.`Materia_Proveedor` (
   `Precio_Lote` FLOAT NOT NULL ,
   `idMateria` INT NOT NULL ,
   `Proveedor_RFC` VARCHAR(10) NOT NULL ,
@@ -42,17 +42,17 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Materia_Proveedor` (
   INDEX `fk_Materia_Proveedor_Proveedor1_idx` (`Proveedor_RFC` ASC) ,
   CONSTRAINT `fk_Materia_Proveedor_Materia_Prima`
     FOREIGN KEY (`idMateria` )
-    REFERENCES `mydb`.`Materia_Prima` (`idMateria` )
+    REFERENCES `cookies`.`Materia_Prima` (`idMateria` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Materia_Proveedor_Proveedor1`
     FOREIGN KEY (`Proveedor_RFC` )
-    REFERENCES `mydb`.`Proveedor` (`RFC` )
+    REFERENCES `cookies`.`Proveedor` (`RFC` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-USE `mydb` ;
+USE `cookies` ;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
