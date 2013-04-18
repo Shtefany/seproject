@@ -53,7 +53,9 @@ if ( !defined("__WEBSESSION__") ){
 			} else {
 				$path = $this->getEmpleado()->getPath();
 				if ( !preg_match("#/seproject/".$path."#" , $_SERVER['REQUEST_URI'] ) ){
-					header("location:/seproject/".$path);
+					if ( !preg_match("#/seproject/php#" , $_SERVER['REQUEST_URI'] ) ){
+						header("location:/seproject/".$path);
+					}
 				}
 			}
 		}
