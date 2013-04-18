@@ -50,9 +50,3 @@ ON DELETE CASCADE
 ON UPDATE CASCADE;
 
 INSERT INTO Area VALUES( NULL ,"Administración","administrador");
-INSERT INTO Area VALUES( NULL ,"Producción","produccion");
-
-INSERT INTO `empleado` (`CURP`, `Nombre`, `Area`, `Contrasena`, `Direccion`) VALUES
-('RULM910705HDFDPG08', 'Miguel Rueda', 2, 'miguelrueda', 'rio de janeiro #88');
-
-
