@@ -14,3 +14,20 @@ function closeInbox() {
 function loadMessages() {
     sendPetitionSync("../php/inbox.php","messages",document);
 }
+
+function viewDetails(){
+	document.getElementById("details").style.display = "block";
+    document.getElementById("details").style.height  = window.innerHeight + "px";
+    document.getElementById("details").style.width = window.innerWidth + "px";
+    loadDetails(idMsg);
+ 
+ 
+}
+function loadDetails(){
+	sendPetitionSync("../php/details.php","msgDetail",document);
+}
+
+function closeDetails() {
+    document.getElementById("details").style.display = "none";
+
+}
