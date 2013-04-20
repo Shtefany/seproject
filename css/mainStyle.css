@@ -214,6 +214,15 @@ ul.sub-level {
 	height: 200px;
 	width: 400px;
 }
+#details{
+	display: none;
+	position:absolute;
+	left: 0px;
+	top:  0px;
+	background-image: url(../img/background.png);
+	height: 200px;
+	width: 400px;
+}
 
 #inbox{
 	position: relative;

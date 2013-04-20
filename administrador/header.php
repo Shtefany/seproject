@@ -22,8 +22,23 @@
              </div>
     		<div class="box">
                 <div id="messages">Aqui van los mensajes</div>
-            </div>
-            
+            </div>			            
+       </div>
+    </div>
+</div>
+<div id="details">
+    <div id="inbox">
+        <center>
+            <h1>Detalle</h1>
+        </center>
+        <div id="content">
+            <div class="box">
+                <div class="form-button"><img src="../img/openmail.png"  alt="Icono" height="20px"/>Responder</div>
+                <div class="form-button" onclick="closeDetails();">Cerrar</div>
+             </div>
+    		<div class="box">
+                <div id="msgDetail">Aqui van el detalle</div>
+            </div>			            
        </div>
     </div>
 </div>
