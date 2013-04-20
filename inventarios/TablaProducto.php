@@ -10,15 +10,27 @@
 	</tr>
 <?php
 	include("../php/DataConnection.class.php");
+	include("../php/Validations.class.php");
 
 	$db = new DataConnection();	
 	$qry = "SELECT P.idProducto,P.nombre,L.idLote, P.Precio, L.fecha_caducidad
 			from Producto P, Lote L
 			where P.idLote = L.idLote";	
 
+
 	if ( isset($_GET["search"] ) ){
 	$filtro = Validations::cleanString($_GET["search"]);
-	$qry .= " WHERE mp.idMateria LIKE '%".$filtro."%' OR mp.nombre LIKE '%".$filtro."%'";
+		if($filtro != "")
+		{
+			if(is_numeric($filtro))
+			{
+				$qry .= " AND P.idProducto = ".$filtro;
+			}
+			else
+			{
+				$qry .= " AND (P.nombre LIKE '%".$filtro."%')";
+			}
+		}
 	}
 
 	$result = $db->executeQuery($qry);	

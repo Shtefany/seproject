@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>Gestionar Materia Prima</title>
-        <link rel="stylesheet" type="text/css" href="../css/mainStyle.css" />
+        <link rel="stylesheet" type="text/css" href="../css/Inventarios_Style.css" />
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
         <link rel="stylesheet" href="/resources/demos/style.css" />

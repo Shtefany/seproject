@@ -71,4 +71,5 @@
 		sendPetitionSync("TablaEmpleados.php?search=" + filtro ,"tablaEmpleado",document);
 		rePaint();
 	}	
+	
 </script>

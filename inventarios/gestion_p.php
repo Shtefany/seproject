@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>Gestionar Materia Prima</title>
-        <link rel="stylesheet" type="text/css" href="../css/mainStyle.css" />
+        <link rel="stylesheet" type="text/css" href="../css/Inventarios_Style.css" />
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">     
     </head>    
     <body>
@@ -23,14 +23,14 @@
         <div id="mainDiv">
         <!-- Aquí se coloca el menú -->
              <nav>
-                <div class="selected-button"><img src="../img/archive.png"  alt="Icono" class="img-icon"/>Gestión de Materia Prima
+                <div class="button"><img src="../img/archive.png"  alt="Icono" class="img-icon"/>Gestión de Materia Prima
                     <ul class="sub-level" type="none">
                         <li onclick="redirect('gestion_ma.php');">Gestión de Materia Prima</li>
                         <li onclick="redirect('ingresar_ma.php');">Ingresar Materia Prima</li>
 
                     </ul>
                 </div>
-                <div class="button" onclick="redirect('gestion_p.php');"><img src="../img/archive.png"  alt="Icono" class="img-icon" />Gestión de Productos</div>
+                <div class="selected-button" onclick="redirect('gestion_p.php');"><img src="../img/archive.png"  alt="Icono" class="img-icon" />Gestión de Productos</div>
                 <div class="button"><img src="../img/notepad.png"  alt="Icono" class="img-icon"/>Reportes
                         <ul class="sub-level" type="none">
                             <li onclick="redirect('reportes_ma.php');">Generar Reporte Materias Primas</li>
@@ -51,7 +51,7 @@
                                 <td class="auxiliarB"></td>
                                 <td class="auxiliarB"></td>
                                 <td class="auxiliarB">
-                                    <input type="text" id="buscar" name="buscar" placeholder = "Buscar en los empleados" class="searchBar"/>
+                                    <input type="text" id="buscar" name="buscar" placeholder = "Buscar Productos" class="searchBar" style="width:250px;"/>
                                 </td>
                                 <td>
                                     <img src="../img/busc.png" class="img-buscar"  alt="Buscar" onClick="onClickBusqueda();"/>
@@ -60,7 +60,7 @@
 
                         </table>
                     </div>   
-                    <div id="tablaMateria" class="box">
+                    <div id="tablaProducto" class="box">
                         <?php include("TablaProducto.php"); ?>
                     </div>
                     
@@ -71,7 +71,7 @@
         <footer>Elaborado por nosotros(C) 2013</footer>
     </body>   
 </html>
-
+<?php include("scripts.php"); ?>
 <script type="text/javascript" src="../js/color.js"></script>
 <script type="text/javascript" src="../js/inventarios.js"></script>
 <script type="text/javascript">
@@ -80,6 +80,18 @@
     function initialize() {
         resizeWindow(document);
     }
+
+    function onClickBusqueda(){
+        loadTable();
+    }
+    function loadTable(){
+
+
+        filtro = document.getElementById('buscar').value;
+        sendPetitionSync("TablaProducto.php?search=" + filtro ,"tablaProducto",document);
+        rePaint();
+    }   
+
     $(function () {
         var dates = $("#from, #to").datepicker
         (

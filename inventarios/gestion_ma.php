@@ -46,12 +46,12 @@
                         <table>
                             <tr>
                                 <td class="auxiliarB">
-                                    <div onclick="redirect('AgregarEmpleado.php');" class="form-button">Agregar Empleado</div>
+                                    <div onclick="redirect('ingresar_ma.php');" class="form-button">Agregar Materia Prima</div>
                                 </td>
                                 <td class="auxiliarB"></td>
                                 <td class="auxiliarB"></td>
                                 <td class="auxiliarB">
-                                    <input type="text" id="buscar" name="buscar" placeholder = "Buscar en los empleados" class="searchBar"/>
+                                <input type="text" id="buscar" name="buscar" placeholder = "Buscar Materias Primas" class="searchBar" style="width:250px;"/>
                                 </td>
                                 <td>
                                     <img src="../img/busc.png" class="img-buscar"  alt="Buscar" onClick="onClickBusqueda();"/>
@@ -71,7 +71,7 @@
         <footer>Elaborado por nosotros(C) 2013</footer>
     </body>   
 </html>
-
+<?php include("scripts.php"); ?>
 <script type="text/javascript" src="../js/color.js"></script>
 <script type="text/javascript" src="../js/inventarios.js"></script>
 <script type="text/javascript">
@@ -80,6 +80,19 @@
     function initialize() {
         resizeWindow(document);
     }
+
+
+    function onClickBusqueda(){
+        loadTable();
+    }
+    function loadTable(){
+
+
+        filtro = document.getElementById('buscar').value;
+        sendPetitionSync("TablaMateria.php?search=" + filtro ,"tablaMateria",document);
+        rePaint();
+    }   
+    
     $(function () {
         var dates = $("#from, #to").datepicker
 		(

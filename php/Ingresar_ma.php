@@ -1,7 +1,7 @@
 <?php
 
 //Es para importar los elementos de otro archivo .php
-include("conexion.php");
+
 include("DataConnection.class.php");
 
 
@@ -36,7 +36,7 @@ $connection->executeQuery("INSERT into materia_prima(Nombre, Unidad, Fecha_Llega
 
 
 $registro2 = $connection->executeQuery("SELECT m.idMateria from materia_prima m where m.Nombre = '$nombre';");
-$connection->executeQuery("INSERT into materia_prima(Nombre, Unidad, Fecha_Llegada, Fecha_Caducidad) VALUES('$nombre', $unidad, '$fecha_Ll', '$fecha_Ca')");
+$connection->executeQuery("INSERT into materia_prima(Nombre, Unidad, Fecha_Llegada, Fecha_Caducidad, Cantidad) VALUES('$nombre', $unidad, '$fecha_Ll', '$fecha_Ca', $cantidad)");
 
 
 
@@ -50,7 +50,8 @@ while($reg2 = mysql_fetch_array($registro2))
 }
 
 
-$connection->executeQuery("INSERT into materia_proveedor(Precio_lote, idMateria, Proveedor_RFC) VALUES($precio, $idMateria, '$idProveedor');");
+
+$connection->executeQuery("INSERT into materia_proveedor(Precio_lote, idMateria, Proveedor_RFC, cantidad) VALUES($precio, $idMateria, '$idProveedor', $cantidad);");
 
 header("Location: ../inventarios/ingresar_ma.php");
 
