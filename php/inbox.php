@@ -3,7 +3,7 @@
 	<tr class="tr-header">
 		<td><h2>Fecha</h2></td>
 		<td><h2>Remitente</h2></td>
-		<td><h2>Mensaje</h2></td>
+		<td><h2>Asunto</h2></td>
 	</tr>
 <?php	
 	include("../php/DataConnection.class.php");	
@@ -17,7 +17,7 @@
 		echo "<td>".$fila["fecha"]."</td>";
 		echo "<td>".$fila["Nombre"]."</td>";
 		echo "<td>".$fila["asunto"]."</td>";
-		echo "<td class='opc'><img src='../img/busc.png' onclick=\"viewDetails();\" alt='Modificar'class='clickable'/></td>";
+		echo "<td class='opc'><img src='../img/busc.png' onclick=\"viewDetails(".$fila["id"].");\" alt='Modificar'class='clickable'/></td>";
 		echo "</tr>";
 	}
 ?>

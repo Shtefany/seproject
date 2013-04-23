@@ -1,4 +1,6 @@
 <!-- scripts -->
+<script type="text/javascript" src="../js/ajax.js"></script>
+<script type="text/javascript" src="../js/mensajes.js"></script>
 <script type="text/javascript" src="../js/color.js"></script>
 <script type="text/javascript" src="../js/CC.js"></script>
 <script type="text/javascript">

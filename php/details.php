@@ -1,11 +1,10 @@
 <?php header('Content-Type: text/html; charset=iso-8859-1'); ?>
 <table id="table-content">
 <?php	
-/*Falta poner la condicion para que solo jale el mensaje seleccionado*/
 	include("../php/DataConnection.class.php");	
 	include("../php/AccessControl.php");	
 	$db = new DataConnection();
-	$qry = "SELECT * FROM Inbox,Mensajes,Empleado WHERE Mensajes.remitente=Empleado.CURP and Inbox.msg=Mensajes.id and Inbox.destinatario='".$sesion->getEmpleado()->getCurp()."'";
+	$qry = "SELECT * FROM Inbox,Mensajes,Empleado WHERE Mensajes.remitente=Empleado.CURP and Inbox.msg=Mensajes.id and Inbox.destinatario='".$sesion->getEmpleado()->getCurp()."' AND Mensajes.id=".$_GET["id"];
 	$result = $db->executeQuery($qry);
 	while($fila = mysql_fetch_array($result))
 	{	
