@@ -11,7 +11,7 @@
 	else
 		$problema = 0;	
 	$db = new DataConnection();		
-	$qry = "INSERT INTO Mensajes VALUES ( null , '".$sesion->getEmpleado()->getCurp()."','".$mensaje."',curdate(),'".$asunto."',".$area.",".$problema.",0);";	
+	$qry = "INSERT INTO Mensajes VALUES ( null , '".$sesion->getEmpleado()->getCurp()."','".$mensaje."',curdate(),'".$asunto."',".$area.",".$problema.",0,0);";	
 	$result = $db->executeQuery($qry);		
 	if ( $result == true )
 		echo "OK";

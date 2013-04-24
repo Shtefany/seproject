@@ -25,7 +25,18 @@
                 <h2>Visualizar problemas</h2>
                 <div id="content">
                     <div class="box">
-                       Etapa del proceso: <select><option>Producción</option><option>Ventas</option><option>Compras</option></select>
+                       Etapa del proceso: 
+					<?php   
+						include ("../php/DataConnection.class.php");
+						$db = new DataConnection();
+						$result = $db->executeQuery("SELECT * FROM Area");
+						echo "<select id='area' name='area'>";
+						echo "<option value='0'>Todos los departamentos</option>";
+						while( $dato = mysql_fetch_assoc($result) ){
+							echo "<option value='".$dato["id"]."'>".$dato["nombre"]."</option>";
+						}
+						echo "</select>";
+					?> 
                     </div>
                     <div class="box">
                         <h4>Periodo de tiempo</h4>
@@ -43,7 +54,7 @@
                         <div class="option" id="estatus"><select><option>Pendiente</option><option>Solucionado</option></select></div>
                     </div>
                     <div class="box">
-                        <div class="form-button">Visualizar problemas</div>
+                        <div class="form-button" onclick="visualizarProblemas();">Visualizar problemas</div>
                     </div>
                 </div>
             </div>			
@@ -62,4 +73,8 @@
             document.getElementById(e).style.display = "block";
         }
     }
+	
+	function visualizarProblemas(){
+		redirect('despliegaProblemas.php');
+	}	
 </script>    
