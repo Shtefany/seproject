@@ -12,13 +12,15 @@
 </div>
 <div id="msgInbox">
     <div id="inbox">
+		<div class="close" onclick="closeInbox();"><img src="../img/close.png" ></div>
         <center>
-            <h1>Notificaciones</h1>
+            <h1 id="banner">Notificaciones</h1>			
         </center>
         <div id="content">
             <div class="box">
-                <div class="form-button"><img src="../img/openmail.png"  alt="Icono" height="20px"/>Enviar Notificaci&oacute;n</div>
-                <div class="form-button" onclick="closeInbox();">Cerrar</div>
+                <div class="form-button" onclick="sendMsg();">Enviar Notificaci&oacute;n</div>
+				<div class="form-button" onclick="loadMessages();">Ver bandeja de entrada</div>
+				<div class="form-button" onclick="loadMessagesArchived();">Ver mensajes archivados</div>
              </div>
     		<div class="box">
                 <div id="messages">Aqui van los mensajes</div>
@@ -26,19 +28,40 @@
        </div>
     </div>
 </div>
+
+<!-- Ver mensaje -->
 <div id="details">
     <div id="inbox">
+		<div class="close" onclick="closeDetails();"><img src="../img/close.png" ></div>
         <center>
             <h1>Detalle</h1>
         </center>
         <div id="content">
             <div class="box">
-                <div class="form-button"><img src="../img/openmail.png"  alt="Icono" height="20px"/>Responder</div>
-                <div class="form-button" onclick="closeDetails();">Cerrar</div>
+                <!--<div class="form-button" onclick="sendMsg();">Responder</div>-->
+				<div class="form-button" onclick="archivarMsg();" id="botonArchivar">Archivar</div>
              </div>
     		<div class="box">
                 <div id="msgDetail">Aqui van el detalle</div>
             </div>			            
+       </div>
+    </div>
+</div>
+
+<!-- Enviar mensaje -->
+<div id="sendMessage">
+    <div id="inbox">
+	<div class="close" onclick="closeSend();"><img src="../img/close.png" ></div>
+        <center>
+            <h1>Enviar Mensaje</h1>
+        </center>
+        <div id="content">
+    		<div class="box">
+                <div id="msgSend">Mensaje D:</div>
+            </div>	
+			<div class="box">
+                <div class="form-button" onclick="sendMessage();">Enviar</div>               
+             </div>
        </div>
     </div>
 </div>

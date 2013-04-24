@@ -12,7 +12,7 @@
         </style>      
     </head>    
     <body>
-    	<?php include("header.php"); ?>
+    	<?php include("../php/header.php"); ?>
         <center>
         <div id="mainDiv">
             <nav>
