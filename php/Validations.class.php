@@ -29,7 +29,6 @@ if ( !defined("__VALIDATIONS__") ){
 				return false; 
 			} 
 		} 
-		
 		public static function validaCURP($string){
 			if ( strlen($string) != 18 ) return false;
 			$valor = str_replace("-", "", $string); 
@@ -43,7 +42,10 @@ if ( !defined("__VALIDATIONS__") ){
 			}
 			return false;
 		}
-		
+		public static function validaTel($string){
+			$reg = "/[0-9]{2}[-. ][0-9]{2}[-. ][0-9]{2}[-. ][0-9]{2}/";
+			return preg_match($reg, $string) ? true: false;		
+		}
 		public static function validaEmail($string){
 			return filter_var($string, FILTER_VALIDATE_EMAIL);  
 		}
