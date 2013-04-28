@@ -26,24 +26,32 @@
                 <div id="content">
 				<table style="margin-left: 10px">
 				<tr style='background-color:#333333; color: white;'>
-					<td><h2>Fecha</h2></td>
-					<td><h2>Remitente</h2></td>
-					<td><h2>Asunto</h2></td>
+					<td style="width: 90px;"><h2>Fecha</h2></td>
+					<td style="width: 200px;"><h2>Remitente</h2></td>
+					<td style="width: 300px;"><h2>Asunto</h2></td>
 				</tr>
                 <?php				
 				include("../php/DataConnection.class.php");	
 				$db = new DataConnection();
-				$qry = "SELECT * FROM Mensajes,Empleado WHERE Mensajes.remitente = Empleado.CURP and Mensajes.archivado = 0 and Mensajes.problema = 1 ORDER BY id DESC";
+				$qry = "SELECT * FROM Mensajes,Empleado,Area WHERE Mensajes.remitente = Empleado.CURP and Empleado.Area = Area.id and Mensajes.problema = 1 ";
+				if ( isset($_GET["area"])){
+					$qry .= " and Empleado.area=".$_GET["area"];
+				}
+				if ( isset($_GET["estatus"])){
+					$qry .= " and Mensajes.archivadoCC=".$_GET["estatus"];
+				}
+				$qry .= " ORDER BY Mensajes.id DESC";
 				$result = $db->executeQuery($qry);
 				$cont = 0;
 				while($fila = mysql_fetch_array($result))
 				{		
 					$cont++;
+					//var_dump($fila);
 					echo "<tr style='background-color:#DDDDDD;'>";
 					echo "<td>".$fila["fecha"]."</td>";
-					echo "<td>".$fila["Nombre"]."</td>";
+					echo "<td>".$fila["nombre"]."</td>";
 					echo "<td>".$fila["asunto"]."</td>";
-					echo "<td><span class='clickable' onclick='despliegaDetalles(".$fila["id"].");'>Ver detalles</span></td>";
+					echo "<td style='width: 90px;'><span class='clickable' style='color:blue;'onclick='despliegaDetalles(".$fila[0].");'>Ver detalles</span></td>";
 					echo "</tr>";
 				}
 				if ( $cont == 0 ){
@@ -58,6 +66,22 @@
         </div>
         </center>
         <footer>Elaborado por nosotros(C) 2013</footer>
+		
+		<div id="detalleCC" class="detalleCC">
+			<div class="close" onclick="closeDetailCC();"><img src="../img/close.png" ></div>
+			<center>
+				<h1>Detalle</h1>
+			</center>
+			<div id="content">
+				<div class="box">
+					<!--<div class="form-button" onclick="sendMsg();">Responder</div>-->
+					<div class="form-button" onclick="archivarMsgCC();" id="botonArchivarCC">Archivar</div>
+				 </div>
+				<div class="box">
+					<div id="msgDetailCC">Aqui van el detalle</div>
+				</div>			            
+		   </div>
+		</div>
     </body>   
 </html>
 <?php include("scripts.php"); ?>
@@ -72,11 +96,33 @@
     }
 	
 	function despliegaDetalles(id){
-		document.getElementById("details").style.display = "block";
-		document.getElementById("details").style.height  = window.innerHeight + "px";
-		document.getElementById("details").style.width = window.innerWidth + "px";
-		sendPetitionSync("../php/details.php?id=" + id,"msgDetail",document);
-		document.getElementById("botonArchivarCC").style.display = "block";
-		document.getElementById("botonArchivar").style.display = "none";
+		document.getElementById("detalleCC").style.display = "block";
+		sendPetitionSync("detalleCC.php?id=" + id,"msgDetailCC",document);
+		if ( document.getElementById("archivadoCC").value == 1 ){
+			document.getElementById("botonArchivarCC").innerHTML = "Marcar como pendiente";
+		}else{
+			document.getElementById("botonArchivarCC").innerHTML = "Marcar como solucionado";
+		}
 	}
+	
+	function closeDetailCC(){
+		document.getElementById("detalleCC").style.display = "none";
+	}
+	
+	function archivarMsgCC(){
+		id = document.getElementById("id").value;	
+		if ( document.getElementById("archivadoCC").value == 1 ){
+			sendPetitionQuery("archivaMensajeCC.php?id=" + id + "&reverse=true"); // Desarchivar
+		}else{
+			sendPetitionQuery("archivaMensajeCC.php?id=" + id); // Archivar
+		}	
+		if ( returnedValue == "OK" ){
+			alert("Operacion realizada correctamente");
+			closeDetails();
+			redirect(document.URL);
+		}else{
+			alert("Error desconocido :(");
+		}
+	}
+	
 </script>    
