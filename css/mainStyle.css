@@ -226,7 +226,20 @@ ul.sub-level {
 }
 
 #inbox{
-	position: relative;
+	position: absolute;
+	left: 400px;
+	width: 620px;
+	height: 500px;
+	top: 80px;
+	border: 1px solid black;
+	background-color: white;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.detalleCC{
+	display: none;
+	position: fixed;
 	left: 400px;
 	width: 600px;
 	height: 500px;

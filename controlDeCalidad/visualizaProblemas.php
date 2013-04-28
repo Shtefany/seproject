@@ -8,7 +8,6 @@
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">  
         <style>
             #fechas {display: none;}
-            #estatus{display: none;}        
         </style>      
     </head>    
     <body>
@@ -49,9 +48,13 @@
                     </div>            
                     <div class="box">
                         <h4>Estado</h4>
-                        <div class="option"><input type="radio" name="filtroEstatus" checked="checked" onclick="toggleState('estatus',false);"  /> Todos los reportes</div>
-                        <div class="option"><input type="radio" name="filtroEstatus" onclick="toggleState('estatus',true);"  /> Por estatus</div>
-                        <div class="option" id="estatus"><select><option>Pendiente</option><option>Solucionado</option></select></div>
+                        <div class="option" id="estatus">
+						<select id="filtroEstatus">
+							<option value="-1">Todos</option>
+							<option value="0">Pendiente</option>
+							<option value="1">Solucionado</option>
+						</select>
+						</div>
                     </div>
                     <div class="box">
                         <div class="form-button" onclick="visualizarProblemas();">Visualizar problemas</div>
@@ -75,6 +78,15 @@
     }
 	
 	function visualizarProblemas(){
-		redirect('despliegaProblemas.php');
+		var extra = "";
+		var indice = document.getElementById("area").selectedIndex;		
+		if ( indice != 0 ){
+			extra = "?area=" + indice;
+		}
+		indice = document.getElementById("filtroEstatus").selectedIndex;		
+		if ( indice != 0 ){
+			extra = "?estatus=" + (indice-1);
+		}		
+		redirect('despliegaProblemas.php' + extra);
 	}	
 </script>    
