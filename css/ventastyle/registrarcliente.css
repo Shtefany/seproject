@@ -1,17 +1,18 @@
 .tb{
 	height: 10px; 
 	width: 135px; 
-	-webkit-border-radius:10px;
+	/*-webkit-border-radius:10px;*/
 }
 .ta{
 	
 	height: 90px; 
-	width: 135px; 
-	-webkit-border-radius:10px;
+	width: 145px; 
+	/*-webkit-border-radius:10px;*/	
 	border-style:none;
 	font-family: Arial; 
 	font-size: 13px;
-	/*margin-top: 10px;*/
+	resize:none;
+	margin-left: 5px;
 }
 .divform{
 	margin-top: 10px;
@@ -22,7 +23,10 @@
     border-radius:10px;
 }
 
-#dvrfc{
+#drfc{
+	margin-top: 20px;
+}
+#RFC{
 	margin-top: 20px;
 }
 #GV{
@@ -89,7 +93,6 @@
     height: 425px;
     overflow: auto;
     margin: 0px auto;
-    border-radius:10px
 }
 #botones{
 	position:absolute;  
@@ -121,7 +124,7 @@
 #cab{
 	margin-top:10px;
 }
-#GV:hover,#rep:hover,#AV:hover,#dvrfc:hover,#acept:hover,#cancel:hover{
+#GV:hover,#rep:hover,#AV:hover,#acept:hover,#cancel:hover{
 	filter: alpha(opacity=100);
 	-moz-opacity: 1.0;
 	opacity: 1.0;

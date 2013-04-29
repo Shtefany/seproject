@@ -16,7 +16,6 @@
     margin-top: -10px;
     height: 530px;
     overflow: auto;
-    border-radius:10px
    
     
 }
@@ -84,15 +83,6 @@
     border-radius:10px;
 }
 
-.divform{
-	margin-top: 10px;
-    font-family: Trebuchet MS;
-	font-size:13pt; 
-	color: white;
-	font-weight:bold;
-	
-    border-radius:10px;
-}
 #VR{
 	border-style:solid; 
 	border-color:#81BEF7;
