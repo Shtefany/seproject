@@ -27,7 +27,7 @@
                 </div>
                 <div class="button" onclick="redirect('gestion_p.php');"><img src="../img/archive.png"  alt="Icono" class="img-icon" />Gestión de Productos</div>
                 <div class="button"><img src="../img/notepad.png"  alt="Icono" class="img-icon"/>Reportes
-				        <ul class="sub-level" type="none">
+                        <ul class="sub-level" type="none">
                             <li onclick="redirect('reportes_ma.php');">Genera Reporte Materias Primas</li>
                             <li onclick="redirect('reportes_p.php');">Genera Reporte de Productos</li>
                         </ul>
@@ -35,22 +35,22 @@
             </nav>  
 
             <div id="all-content">
-				
+                
                 <h2 id="titulo">Ingresar Materia Prima</h2>
 
                 <div id="content">
                     <form id="altaMA" action="AgregarMA.php"name="altaMA" method ="POST">
-    					<div class="box">
-    					<table>
+                        <div class="box">
+                        <table>
 
-    						<tr>
-    						   <td style="color: white;">Nombre: </td>
-    						   <td><input type="text" style="width:150px;" id="name" name="name" placeholder="Escriba su nombre"/></td>
-    						</tr>
+                            <tr>
+                               <td style="color: white;">Nombre: </td>
+                               <td><input type="text" style="width:150px;" id="name" name="name" placeholder="Escriba su nombre"/></td>
+                            </tr>
 
-    						<tr>
-    						   <td style="color: white;">Proveedor: </td>
-    						   <td>
+                            <tr>
+                               <td style="color: white;">Proveedor: </td>
+                               <td>
                             <?php
                                 include("../php/DataConnection.class.php");
                                 include("../php/Validations.class.php");
@@ -64,14 +64,14 @@
                                 }
                                 echo "</select>";
                             ?></td>
-    						</tr>
+                            </tr>
 
-    						<tr>
-    							<td style="color: white;">Cantidad: </td>
-    							<td>
+                            <tr>
+                                <td style="color: white;">Cantidad: </td>
+                                <td>
                                     <input type="text" style="width:150px;" id="cantidad" name="cantidad" min="0" max="10000">
                                 </td>
-    						</tr>
+                            </tr>
                             <tr>
                                 <td style="color: white;">Unidad:</td>
                                 <td>
@@ -84,23 +84,23 @@
                                 </td>
                             </tr>
 
-    						<tr>
-    							<td style="color: white;">Precio por unidad:</td>
-    							<td>
+                            <tr>
+                                <td style="color: white;">Precio por unidad:</td>
+                                <td>
                                     <input type="text" style="width:150px;" id="precio" name="precio" min="0" max="10000"> 
                                 </td>
-    						</tr>
+                            </tr>
 
-    						<tr>
-    						   <td style="color: white;">Fecha inicial: </td>
-    						   <td><input type="date" style="width:160px;" id="from" name="from" placeholder="yyyy-mm-dd"/></td>
-    						</tr>
-    						<tr>
-    						   <td style="color: white;">Fecha de caducidad: </td>
-    						   <td><input type="date" style="width:160px;" id="to" name="to" placeholder="yyyy-mm-dd"/></td> 
-    						</tr>
-    					</table>
-    					</div>
+                            <tr>
+                               <td style="color: white;">Fecha inicial: </td>
+                               <td><input type="date" style="width:160px;" id="from" name="from" placeholder="yyyy-mm-dd"/></td>
+                            </tr>
+                            <tr>
+                               <td style="color: white;">Fecha de caducidad: </td>
+                               <td><input type="date" style="width:160px;" id="to" name="to" placeholder="yyyy-mm-dd"/></td> 
+                            </tr>
+                        </table>
+                        </div>
                         <div class="box">
                             <div id="buttonOK" class="form-button" onclick="agregarMA();">Agregar</div>
                             <div class="form-button" onclick="redirect('gestion_ma.php')">Cancelar</div>   

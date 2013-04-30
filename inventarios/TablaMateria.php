@@ -68,8 +68,8 @@
 				<td>".$cantidad."</td>
 				<td>".$unidad."</td>
 				<td>".$fecha_C."</td>
-				<td class='opc'><img src='../img/pencil.png'/></td>
-				<td class='opc'><img src='../img/less.png'/></td>
+				<td class='opc'><img src='../img/pencil.png' onclick='modificarEmpleado(\"".$idm."\")' alt='Modificar' class='clickable'/></td>
+				<td class='opc'><img src='../img/less.png'   onclick='eliminarEmpleado(\"".$idm."\")' alt='Eliminar' class='clickable'/></td>
 			</tr>";
 		}
 	}

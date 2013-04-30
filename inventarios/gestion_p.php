@@ -2,26 +2,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Gestionar Materia Prima</title>
-        <link rel="stylesheet" type="text/css" href="../css/Inventarios_Style.css" />
+        <title>Gestionar Producto</title>
+        <link rel="stylesheet" type="text/css" href="../css/mainStyle.css" />
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">     
     </head>    
     <body>
-    <!-- El header es el mismo para todas las paginas-->
-        <div id="header">
-            <div id="leftHeader">
-                <img src="../img/user.png" class="img-header" alt="Username" />
-                <div id="userName" class="text-header">Usuario de Inventarios</div>
-                <img src="../img/noti.png" class="img-header" alt="Notificaciones" />
-                <img src="../img/out.png" class="img-header" alt="Salir" />
-            </div>
-            <div id="rightHeader">
-                <img src="../img/Banner1.png" class="img-banner" alt="Sistema" />
-            </div>
-        </div>
+        <?php include("header.php"); ?>
         <center>
         <div id="mainDiv">
-        <!-- Aquí se coloca el menú -->
+        <!-- Aquí se colorca el menú -->
              <nav>
                 <div class="button"><img src="../img/archive.png"  alt="Icono" class="img-icon"/>Gestión de Materia Prima
                     <ul class="sub-level" type="none">
@@ -40,18 +29,18 @@
             </nav>  
   <!-- Divisor del contenido de la pagina -->
             <div id="all-content">
+                <h2>Gestión de Productos</h2>
                 <div id="content">
-                    <h2>Gestión de Productos</h2>
                     <div class="box">
                         <table>
                             <tr>
                                 <td class="auxiliarB">
-                                    <div onclick="redirect('AgregarEmpleado.php');" class="form-button">Agregar Empleado</div>
+                                    <div onclick="redirect('ingresar_prod.php');" class="form-button">Agregar Producto</div>
                                 </td>
                                 <td class="auxiliarB"></td>
                                 <td class="auxiliarB"></td>
                                 <td class="auxiliarB">
-                                    <input type="text" id="buscar" name="buscar" placeholder = "Buscar Productos" class="searchBar" style="width:250px;"/>
+                                <input type="text" id="buscar" name="buscar" placeholder = "Buscar Producto" class="searchBar" style="width:250px;"/>
                                 </td>
                                 <td>
                                     <img src="../img/busc.png" class="img-buscar"  alt="Buscar" onClick="onClickBusqueda();"/>
@@ -64,7 +53,7 @@
                         <?php include("TablaProducto.php"); ?>
                     </div>
                     
-                    </div>                      
+                    </div>                          
                 </div>
             </div>
         </center>
@@ -84,38 +73,30 @@
     function onClickBusqueda(){
         loadTable();
     }
-    function loadTable(){
+    
 
+    function modificarProducto(id){
+            redirect("ingresar_prod.php?id=" + id);
+    }
+
+    function eliminarProducto(id){
+        if( confirm("¿Seguro que desea eliminar el producto con id" + id +"?")){
+            sendPetitionQuery("EliminarProducto.php?id=" + id);
+            alert("Producto eliminado");
+            loadTable();
+        }
+    }
+
+    function loadTable(){
 
         filtro = document.getElementById('buscar').value;
         sendPetitionSync("TablaProducto.php?search=" + filtro ,"tablaProducto",document);
         rePaint();
     }   
 
-    $(function () {
-        var dates = $("#from, #to").datepicker
-        (
-            {
-                defaultDate: "+1w",
-                changeMonth: true,
-                changeYear: true,
-                numberOfMonths: 1,
-
-                onSelect: function (selectedDate) {
-                    var option = this.id == "from" ? "minDate" : "maxDate",
-                        instance = $(this).data("datepicker"),
-                        date = $.datepicker.parseDate(
-                            instance.settings.dateFormat ||
-                            $.datepicker._defaults.dateFormat,
-                            selectedDate, instance.settings);
-                    dates.not(this).datepicker("option", option, date);
-                }
-            }
-        );
-    });
+ 
 </script> 
 <script type="text/javascript" src="../js/jquery-1.5.1.js"></script>
 <script type="text/javascript" src="../js/jquery.ui.core.js"></script>
 <script type="text/javascript" src="../js/jquery.ui.widget.js"></script>
-<script type="text/javascript" src="../js/jquery.ui.datepicker.js"></script>
 <script type="text/javascript" src="../js/navigation.js"></script>        
