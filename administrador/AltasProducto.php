@@ -1,14 +1,10 @@
 ﻿<!--
-	AgregarEmpleado.php
-	Última modificación: 11/04/2013
+	AltasProducto.php
+	Última modificación: 2013-05-01
 	
-	Agrega empleado o los modifica
+	Da de alta un producto
 	
-	Recibe: 
-		$_GET["id"] : RFC del empleado a modificar ó
-					  sin definir cuando se va a agregar uno nuevo
-	
-	- Documentación del código: OK
+	- Codificacion UTF-8 OK
 -->
 <?php include("../php/AccessControl.php"); ?>
 <!DOCTYPE html>
@@ -35,7 +31,7 @@
 				<input id="idProducto" name="idProducto" type="hidden"/>
 				<div id="content">
                     <div class="box">
-					<table>						
+					<table class="form-table">						
 						<tr>
 						   <td>Nombre: </td>
 						   <td><input id="nombreP" name="nombreP" type="text" placeholder="Nombre del Producto" onblur="valida(this.value,'msgNombre','nombre');"/></td>
@@ -45,36 +41,31 @@
 							<td>Precio: </td>
 							<td><input id="precioP" name="precioP" type="text" placeholder="Precio" onblur="valida(this.value,'msgPrecio','precio');"/></td>
 							<td><span id="msgPrecio"></span></td>
-						</tr>
-						
+						</tr>						
 					</table>
 					</div>
 					<div id="recetaTitle" class="box">
 						<h2>Asignar Receta</h2>
                          <p>Seleccione el ingrediente para agregar a la receta </p>
-								<table>
-										<tr>
-										<td>Ingrediente</td>
-										<td><?php include("SelectIngrediente.php"); ?></td>
-										<td><img src='../img/ok.png'   onclick='AddMP()' alt='Agregar' class='clickable'/></td>
-										</tr>
-								</table>
-								
+						<table>
+							<tr>
+								<td>Ingrediente</td>
+								<td><?php include("SelectIngrediente.php"); ?></td>
+								<td><input type="button" value="Agregar a la lista"  onclick='AddMP();' /></td>
+							</tr>
+						</table>
                     </div>
-					 <div id="recetaTable" class="box">
-				
+					<div id="recetaTable" class="box">
 						<table id="table-aux">
 							<tbody id="cuerpoT" name="cuerpoT">
-										<tr id="titulosTr" class="tr-header">
-										<td>Ingrediente</td>
-										<td>Unidad</td>
-										<td>Cantidad necesaria</td>
-										<td> </td>
-										<td> </td>
-										</tr>
+								<tr id="titulosTr" class="tr-header">
+								<td>Ingrediente</td>
+								<td>Unidad</td>
+								<td>Cantidad necesaria</td>
+								<td> </td>
+								</tr>
 							</tbody>
 						</table>
-				
 					</div> 
 					<div class="box">
                         <div id="buttonOK" class="form-button" onClick="agregarProducto();">Aceptar</div>

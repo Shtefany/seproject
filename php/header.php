@@ -1,7 +1,7 @@
 <!--	header     -->
 <div id="header">
 	<div id="leftHeader">
-		<img src="../img/user.png" class="img-header" alt="Username" />
+		<img src="../img/user.png" class="img-header-nc" alt="Username" />
 		<div id="userName" class="text-header"><?php echo $sesion->getEmpleado()->getNombre(); ?></div>
 		<img src="../img/noti.png" class="img-header" alt="Notificaciones" onclick="openInbox();" />
 		<img src="../img/out.png" class="img-header" alt="Salir" onclick="redirect('../logout.php');"/>

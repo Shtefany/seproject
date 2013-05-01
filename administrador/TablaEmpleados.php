@@ -1,22 +1,28 @@
-<?php
+ï»¿<?php
 	/*
 		TablaEmpleados.php
-		Última modificación: 11/04/2013		
+		Ãšltima modificaciÃ³n: 2013-05-01
 		
 		Genera la tabla de empleados dinamicamente.
 		
 		Recibe:
-			$_GET["search"] : filtro de la búsqueda de empleados en CURP o Nombre
+			$_GET["search"] : filtro de la bÃºsqueda de empleados en CURP o Nombre
 			
-		- Documentación del código: OK		
+		- DocumentaciÃ³n del cÃ³digo: OK	
+
+		ActualizaciÃ³n del 1 de mayo:
+			- Se corrigen los titulos de la tabla
+			- Se conviere el documento a UTF-8
+			- Se fijan los tamaÃ±os de cada columna
+		
 	*/
 	header('Cache-Control: no-cache, no-store, must-revalidate');
 ?>
 <table id='table-content'>
 	<tr class='tr-header'>
-		<td>idEmpleado</td>
-		<td>Nombre</td>
-		<td>Direccion</td>
+		<td style='width:180px;'>CURP</td>
+		<td style='width:220px;'>Nombre del empleado</td>
+		<td style='width:230px;'>DirecciÃ³n</td>
 		<td class='opc'> </td>
 		<td class='opc'> </td>
 	</tr>
@@ -26,7 +32,7 @@
 	$db = new DataConnection();	
 	$qry = "SELECT * FROM Empleado";
 	
-	// Añade parametros de búsqueda
+	// AÃ±ade parametros de bÃºsqueda
 	if ( isset($_GET["search"] ) ){ 
 		$filtro = Validations::cleanString($_GET["search"]); // Limpia la entrada
 		$qry .= " WHERE CURP LIKE '%".$filtro."%' OR Nombre LIKE '%".$filtro."%'";

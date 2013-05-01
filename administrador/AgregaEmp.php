@@ -19,6 +19,7 @@
 			DATABASE_PROBLEM: No se pudo realizar la acción en la bd
 			MISSMATCH_PASSWORD: Los passwords no coinciden
 			INPUT_PROBLEM: Algun elemento no tiene el formato correcto
+			ID_ALREADY_USED: El RFC ya ha sido registrado
 	*/
 	include("../php/Validations.class.php");
 	include("../php/Empleado.class.php");	
@@ -33,19 +34,24 @@
 	$direccion = str_replace("%23", "#", $direccion);
 	
 	if ( Validations::validaNombre($nombre) && Validations::validaCURP($curp) ){
-		if ( $password == $password2 ){			
-			if ( !isset($_GET["edit"]) ){
-				$accept     =	Empleado::Agregar($curp,$nombre,$password,$area,$direccion);	
+		if ( Empleado::findById($curp) != false && !isset($_GET["edit"]) ){
+			echo "ID_ALREADY_USED";
+		}
+		else{
+			if ( $password == $password2 ){			
+				if ( !isset($_GET["edit"]) ){
+					$accept     =	Empleado::Agregar($curp,$nombre,$password,$area,$direccion);	
+				}else{
+					$accept     =	Empleado::Modificar($curp,$nombre,$area,$direccion);	
+				}
+				if(!$accept){
+					echo "DATABASE_PROBLEM";
+				}else{
+					echo "OK";
+				}
 			}else{
-				$accept     =	Empleado::Modificar($curp,$nombre,$area,$direccion);	
+				echo "MISSMATCH_PASSWORD";
 			}
-			if(!$accept){
-				echo "DATABASE_PROBLEM";
-			}else{
-				echo "OK";
-			}
-		}else{
-			echo "MISSMATCH_PASSWORD";
 		}
 	}else{
 		echo "INPUT_PROBLEM";

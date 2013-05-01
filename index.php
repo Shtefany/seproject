@@ -36,7 +36,7 @@
 			</p>
 			<?php
 			if ( isset($_GET["error"]) ){
-				echo "<p class='forgot-password'>Usuario o contraseña inválidos</p>";
+				echo "<p class='forgot-password'>Usuario o contraseña incorrectos</p>";
 			}
 			?>
 		</form>
