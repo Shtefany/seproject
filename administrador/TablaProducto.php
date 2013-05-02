@@ -1,22 +1,23 @@
-<?php
+ï»¿<?php
 	/*
 		TablaProducto.php
-		Última modificación: 12/04/2013		
+		Ãšltima modificaciÃ³n: 12/04/2013		
 		
 		Genera la tabla de empleados dinamicamente.
 		
 		Recibe:
-			$_GET["search"] : filtro de la búsqueda de empleados en CURP o Nombre
+			$_GET["search"] : filtro de la bÃºsqueda de empleados en CURP o Nombre
 			
-		- Documentación del código: OK		
+		- DocumentaciÃ³n del cÃ³digo: OK		
 	*/
 	header('Cache-Control: no-cache, no-store, must-revalidate');
+	include("../php/money.php");
 ?>
 <table id='table-content'>
 	<tr class='tr-header'>
-		<td>idProducto</td>
-		<td>Nombre</td>
-		<td>Precio</td>
+		<td style='width:70px;'>ID</td>
+		<td style='width:250px;'>Nombre del producto</td>
+		<td style='width:180px;'>Precio</td>
 		<td class='opc'> </td>
 		<td class='opc'> </td>
 	</tr>
@@ -26,7 +27,7 @@
 	$db = new DataConnection();	
 	$qry = "SELECT * FROM Producto";
 	
-	// Añade parametros de búsqueda
+	// AÃ±ade parametros de bÃºsqueda
 	if ( isset($_GET["search"] ) ){ 
 		$filtro = Validations::cleanString($_GET["search"]); // Limpia la entrada
 		$qry .= " WHERE idProducto LIKE '%".$filtro."%' OR Nombre LIKE '%".$filtro."%' OR Precio LIKE '%".$filtro."%'";
@@ -51,9 +52,9 @@
 			echo ("<tr class='tr-cont' id='".$id."' name='".$id."'>
 				<td>".$id."</td>
 				<td>".$nombre."</td>
-				<td>".$precio."</td>
+				<td>".toMoney($precio)."</td>
 				<td class='opc'><img src='../img/pencil.png' onclick='modificarProducto(\"".$id."\")' alt='Modificar' class='clickable'/></td>
-				<td class='opc'><img src='../img/less.png'   onclick='eliminarProducto(\"".$id."\")' alt='Eliminar' class='clickable'/></td>
+				<td class='opc'><img src='../img/less.png'   onclick='eliminarProducto(\"".$id."\",\"".$nombre."\")' alt='Eliminar' class='clickable'/></td>
 			</tr>");
 		}
 	}	

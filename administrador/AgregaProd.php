@@ -23,17 +23,13 @@
 		
 		$filas=$_GET['numeroFilas'];
 		for ($i=1; $i <= $filas; $i++) 
-		{
-			
+		{			
 			if (!Validations::validaFloat($_GET['cantidad'.$i]))
 			{
 				echo "INPUT_PROBLEM";
 				return;
 			}
-			
-			
-		}
-		
+		}		
 	}
 	
 	if ( Validations::validaNombre($nombre) && Validations::validaFloat($precio) ){

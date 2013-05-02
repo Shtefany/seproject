@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<?php include("../php/AccessControl.php"); ?>
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -7,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">        
     </head>    
     <body>
-    	<?php include("header.php"); ?>
+    	<?php include("../php/header.php"); ?>
         <center>
         <div id="mainDiv">
             <nav>
@@ -24,10 +25,10 @@
                         <div class="option"><input type="radio" name="filtroLote" />Por número de lote de Producto</div>
                     </div>
                     <div class="box">
-                       Número de lote: <input type="text" placeholder="Ingrese aquí el lote" />
+                       Número de lote: <input type="text" placeholder="Ingrese aquí el lote" id="numLote" />
                     </div>        
                     <div class="box">
-                        <div class="form-button">Rastrear producto</div>
+                        <div class="form-button" onclick="track();">Rastrear producto</div>
                     </div>
                 </div>
             </div>
@@ -38,3 +39,9 @@
     </body>   
 </html>
 <?php include("scripts.php"); ?>
+<script>
+	function track(){
+		var numLote = document.getElementById('numLote').value;
+		redirect('tracking.php?tipo=1&numero=' + numLote);
+	}
+</script>	

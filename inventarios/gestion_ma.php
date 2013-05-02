@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿<!--
+    AgregarEmpleado.php
+    Última modificación: 11/04/2013
+    
+    Agrega empleado o los modifica
+    
+    Recibe: 
+        $_GET["id"] : RFC del empleado a modificar ó
+                      sin definir cuando se va a agregar uno nuevo
+    
+    - Documentación del código: OK
+-->
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -7,21 +19,10 @@
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">     
     </head>    
     <body>
-    <!-- El header es el mismo para todas las paginas-->
-        <div id="header">
-            <div id="leftHeader">
-                <img src="../img/user.png" class="img-header" alt="Username" />
-                <div id="userName" class="text-header">Usuario de Inventarios</div>
-                <img src="../img/noti.png" class="img-header" alt="Notificaciones" />
-                <img src="../img/out.png" class="img-header" alt="Salir" />
-            </div>
-            <div id="rightHeader">
-                <img src="../img/Banner1.png" class="img-banner" alt="Sistema" />
-            </div>
-        </div>
+        <?php include("header.php"); ?>
         <center>
         <div id="mainDiv">
-        <!-- Aquí se coloca el menú -->
+        <!-- Aquí se colorca el menú -->
              <nav>
                 <div class="selected-button"><img src="../img/archive.png"  alt="Icono" class="img-icon"/>Gestión de Materia Prima
                     <ul class="sub-level" type="none">
@@ -40,18 +41,18 @@
             </nav>  
   <!-- Divisor del contenido de la pagina -->
             <div id="all-content">
+                <h2>Gestión de Materias Primas</h2>
                 <div id="content">
-                    <h2>Gestión de Materias Primas</h2>
                     <div class="box">
                         <table>
                             <tr>
                                 <td class="auxiliarB">
-                                    <div onclick="redirect('AgregarEmpleado.php');" class="form-button">Agregar Empleado</div>
+                                    <div onclick="redirect('ingresar_ma.php');" class="form-button">Agregar Materia Prima</div>
                                 </td>
                                 <td class="auxiliarB"></td>
                                 <td class="auxiliarB"></td>
                                 <td class="auxiliarB">
-                                    <input type="text" id="buscar" name="buscar" placeholder = "Buscar en los empleados" class="searchBar"/>
+                                <input type="text" id="buscar" name="buscar" placeholder = "Buscar Materias Primas" class="searchBar" style="width:250px;"/>
                                 </td>
                                 <td>
                                     <img src="../img/busc.png" class="img-buscar"  alt="Buscar" onClick="onClickBusqueda();"/>
@@ -64,14 +65,14 @@
                         <?php include("TablaMateria.php"); ?>
                     </div>
                     
-                    </div>                      
+                    </div>                          
                 </div>
             </div>
         </center>
         <footer>Elaborado por nosotros(C) 2013</footer>
     </body>   
 </html>
-
+<?php include("scripts.php"); ?>
 <script type="text/javascript" src="../js/color.js"></script>
 <script type="text/javascript" src="../js/inventarios.js"></script>
 <script type="text/javascript">
@@ -80,6 +81,31 @@
     function initialize() {
         resizeWindow(document);
     }
+
+
+    function onClickBusqueda(){
+        loadTable();
+    }
+
+    function modificarEmpleado(id){
+        redirect("ingresar_ma.php?id=" + id);
+    }
+
+    function eliminarEmpleado(id){
+        if ( confirm("¿Seguro que desea eliminar al MA con id " + id +"?") ){
+            sendPetitionQuery("EliminarMA.php?id=" + id );
+            alert("Materia Prima Eliminada");
+            loadTable();
+        }
+    }
+    function loadTable(){
+
+
+        filtro = document.getElementById('buscar').value;
+        sendPetitionSync("TablaMateria.php?search=" + filtro ,"tablaMateria",document);
+        rePaint();
+    }   
+    
     $(function () {
         var dates = $("#from, #to").datepicker
 		(

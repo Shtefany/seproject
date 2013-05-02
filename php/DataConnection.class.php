@@ -21,6 +21,17 @@
 				}
 				$this->link = NULL;
 			} 
+		
+			public static function testConnection(){
+				$link = mysql_connect($this->server,$this->user,$this->password);
+				if ($link){
+					$db_selected = mysql_select_db($this->database, $link);
+					if ($db_selected) {
+						return true;
+					}
+				}
+				return false;
+			}
 			
 			public function isConnectionEstablished(){
 				if ( $this->link != NULL ) return true; return false;

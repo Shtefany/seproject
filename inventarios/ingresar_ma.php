@@ -1,8 +1,10 @@
 ﻿<!DOCTYPE html>
+
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Gestionar Materia Prima</title>
+        <title>Inventarios</title>
         <link rel="stylesheet" type="text/css" href="../css/mainStyle.css" />
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
@@ -13,22 +15,10 @@
 
     </head>    
     <body>
-    <!-- El header es el mismo para todas las paginas-->
-        <div id="header">
-            <div id="leftHeader">
-                <img src="../img/user.png" class="img-header" alt="Username" />
-                <div id="userName" class="text-header">Usuario de Inventarios</div>
-                <img src="../img/noti.png" class="img-header" alt="Notificaciones" />
-                <img src="../img/out.png" class="img-header" alt="Salir" />
-            </div>
-            <div id="rightHeader">
-                <img src="../img/Banner1.png" class="img-banner" alt="Sistema" />
-            </div>
-        </div>
+        <?php include("header.php"); ?>
         <center>
         <div id="mainDiv">
-        <!-- Aquí se coloca el menú -->
-             <nav>
+            <nav>
                 <div class="selected-button"><img src="../img/archive.png"  alt="Icono" class="img-icon"/>Gestión de Materia Prima
                     <ul class="sub-level" type="none">
                         <li onclick="redirect('gestion_ma.php');">Consulta Materia Prima</li>
@@ -43,15 +33,15 @@
                         </ul>
                 </div>
             </nav>  
-            <!-- Divisor del contenido de la pagina -->
+
             <div id="all-content">
 				
-                <h2>Ingresar Materia Prima</h2>
+                <h2 id="titulo">Ingresar Materia Prima</h2>
 
                 <div id="content">
-                    <form action="../php/Ingresar_ma.php" method="post" name="frm">
+                    <form id="altaMA" action="AgregarMA.php"name="altaMA" method ="POST">
     					<div class="box">
-    						<table>
+    					<table>
 
     						<tr>
     						   <td style="color: white;">Nombre: </td>
@@ -85,11 +75,11 @@
                             <tr>
                                 <td style="color: white;">Unidad:</td>
                                 <td>
-                                    <select name="unidad" style="width:165px;">
+                                    <select name="unidad" id="unidad" style="width:165px;">
                                         <option value="Kg">Kilogramos</option>
                                         <option value="Lt">Litros</option>
                                         <option value="O">Onza</option>
-                                        <option value="Paquete">Paquete</option>
+                                        <option value="Pack">Paquete</option>
                                     </select>
                                 </td>
                             </tr>
@@ -109,12 +99,11 @@
     						   <td style="color: white;">Fecha de caducidad: </td>
     						   <td><input type="date" style="width:160px;" id="to" name="to" placeholder="yyyy-mm-dd"/></td> 
     						</tr>
-    						</table>
+    					</table>
     					</div>
                         <div class="box">
-                            <button name="mysubmitbutton" id="mysubmitbutton" type="submit" class="form-button">  
-                                Ingresar a Inventario
-                            </button> 
+                            <div id="buttonOK" class="form-button" onclick="agregarMA();">Agregar</div>
+                            <div class="form-button" onclick="redirect('gestion_ma.php')">Cancelar</div>   
                         </div>
                     </form>
                 </div>
@@ -124,6 +113,79 @@
         <footer>Elaborado por nosotros(C) 2013</footer>
     </body>   
 </html>
+<script type="text/javascript">
+    var modify = false;
+</script>
+
+<?php
+    /*
+        Verifica si es la opcion de modificar un empleado, si lo es, agrega los scripts y carga los datos correspondientes
+    */
+    if ( isset($_GET["id"]) ){
+        include("../php/Materia_Prima.class.php");
+        $ma = $_GET["id"];
+        $encontrado = MateriaPrima::findById($ma);
+
+?>
+    <script type="text/javascript">
+    
+        document.getElementById('name').value = "<?php echo $encontrado->getNombre(); ?>";
+        document.getElementById('provider').disabled="disabled";
+        document.getElementById('cantidad').value = "<?php echo $encontrado->getCantidad(); ?>";
+        document.getElementById('unidad').value = "<?php echo $encontrado->getUniad(); ?>";
+        document.getElementById('precio').value = "<?php echo $encontrado->getPrecio(); ?>";
+        document.getElementById('from').value = "<?php echo $encontrado->getFechaL(); ?>";
+        document.getElementById('to').value = "<?php echo $encontrado->getFechaC(); ?>";    
+    
+        document.getElementById('titulo').innerHTML = "Editar Materia Prima";
+        document.getElementById('buttonOK').innerHTML = "Editar";
+
+        modify = true;
+    </script>
+
+<?php
+    }
+?>
+<?php include("scripts.php"); ?>
+
+<script type="text/javascript">
+    /* Agrega el empleado a la base de datos */
+    function agregarMA(){
+
+        parametros = "nombre=" + document.getElementById('name').value + "&";
+        parametros+= "proveedor=" + document.getElementById('provider').value + "&";
+        parametros+= "cantidad=" + document.getElementById('cantidad').value + "&";
+        parametros+= "unidad=" + document.getElementById('unidad').value + "&";
+        parametros+= "precio=" + document.getElementById('precio').value + "&";
+        parametros+= "fecha_l=" + document.getElementById('from').value + "&";
+        parametros+= "fecha_c=" + document.getElementById('to').value + "&";
+        parametros+= "idm=" + "<?php echo $ma ?>";
+
+        if ( modify ){
+
+            parametros +="&edit=1";
+        }
+
+        parametros = parametros.replace("#","%23");
+
+        //alert(parametros);
+        sendPetitionQuery("AgregarMA.php?" + encodeURI(parametros));
+        console.log("AgregarMA.php?" + encodeURI(parametros));
+        /* returnedValue almacena el valor que devolvio el archivo PHP */
+        if (returnedValue == "OK" ){
+            if ( modify ){
+                alert("Materia Prima editada correctamente");
+            }else{
+                alert("Materia Prima agregada correctamente");
+            }
+            window.location = "./gestion_ma.php";
+        }
+
+        alert(returnedValue);
+    }
+    
+</script>
+
 <script type="text/javascript" src="../js/color.js"></script>
 <script type="text/javascript" src="../js/inventarios.js"></script>
 <script type="text/javascript">
@@ -134,30 +196,30 @@
         }
         $(function () {
             var dates = $("#from, #to").datepicker
-    		(
-    			{
+            (
+                {
 
-    			    defaultDate: "+1w",
-    			    changeMonth: true,
-    			    changeYear: true,
-    			    numberOfMonths: 1,
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    changeYear: true,
+                    numberOfMonths: 1,
                     dateFormat: 'yy/mm/dd',
 
-    			    onSelect: function (selectedDate) {
-    			        var option = this.id == "from" ? "minDate" : "maxDate",
-    						instance = $(this).data("datepicker"),
-    						date = $.datepicker.parseDate(
-    							instance.settings.dateFormat ||
-    							$.datepicker._defaults.dateFormat,
-    							selectedDate, instance.settings);
-    			        dates.not(this).datepicker("option", option, date);
-    			    }
-    			}
-    		);
+                    onSelect: function (selectedDate) {
+                        var option = this.id == "from" ? "minDate" : "maxDate",
+                            instance = $(this).data("datepicker"),
+                            date = $.datepicker.parseDate(
+                                instance.settings.dateFormat ||
+                                $.datepicker._defaults.dateFormat,
+                                selectedDate, instance.settings);
+                        dates.not(this).datepicker("option", option, date);
+                    }
+                }
+            );
         });
 </script> 
 <script type="text/javascript" src="../js/jquery-1.5.1.js"></script>
 <script type="text/javascript" src="../js/jquery.ui.core.js"></script>
 <script type="text/javascript" src="../js/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="../js/jquery.ui.datepicker.js"></script>
-<script type="text/javascript" src="../js/navigation.js"></script>    
+<script type="text/javascript" src="../js/navigation.js"></script>      

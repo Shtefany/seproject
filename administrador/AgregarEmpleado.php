@@ -9,6 +9,7 @@
 					  sin definir cuando se va a agregar uno nuevo
 	
 	- Documentación del código: OK
+	- Codificación del documento en UTF-8 OK 
 -->
 <?php include("../php/AccessControl.php"); ?>
 <!DOCTYPE html>
@@ -26,14 +27,14 @@
         <nav>
 			<div class="selected-button" onclick="redirect('GestionEmpleado.php');"><img src="../img/archive.png"  alt="Icono" class="img-icon" />Gestión Empleados</div>
 			<div class="button" onclick="redirect('GestionProducto.php');"><img src="../img/configuration2.png" alt="Icono" class="img-icon" />Gestión Productos</div>
-			<div class="button" onclick="redirect('Reportes.php');"><img src="../img/notepad.png"  alt="Icono" class="img-icon" />Solicitar Reporte</div>
+			<div class="button" onclick="redirect('GestionReceta.php');"><img src="../img/note.png"  alt="Icono" class="img-icon" />Gestión Recetas</div>
         </nav>
 		<div id="all-content">
                 <h2 id="titulo">Agregar Empleado</h2>
-				<form id="altaEmpleado" action="AgregaEmp.php"name="altaEmpleado" method ="POST">
+				<form id="altaEmpleado" action="AgregaEmp.php" name="altaEmpleado" method ="POST">
 				<div id="content">
                     <div class="box">
-					<table>						
+					<table class="form-table">						
 						<tr>
 							<td>CURP: </td>
 							<td><input id="curp" name="curp" type="text" placeholder="CURP" onblur="valida(this.value,'msgCURP','curp');"/> </td>
@@ -59,12 +60,12 @@
 							 <td><input id="pass2" name="pass2" type="password" placeholder="Confirmar contraseña" onblur="valida(this.value,'msgPass2','password');" /> </td>
 							 <td><span id="msgPass2"></span></td>
 						</tr>
+						<tr>
+							 <td>Área: </td>
+							 <td><?php include("SelectAreas.php"); ?></td>
+						</tr>
 					</table>
 					</div>
-                    <div class="box">
-                            <p>Seleccione el área a la que será asignado el empleado </p>
-								Área:<?php include("SelectAreas.php"); ?>
-                        </div>
                     <div class="box">
 						<div id="buttonOK" class="form-button" onclick="agregarEmpleado();">Agregar</div>
                         <div class="form-button" onclick="redirect('GestionEmpleado.php')">Cancelar</div>	
@@ -75,7 +76,7 @@
 			
         </div>
         </center>
-        <footer>Elaborado por nosotros(C) 2013</footer>
+        <?php include("../php/footer.php"); ?>
     </body>   
 </html>
 <script type="text/javascript">
@@ -99,8 +100,7 @@
 					break;
 				}
 			}
-		}
-	
+		}	
 		document.getElementById('curp').disabled="disabled";
 		document.getElementById('nombre').value = "<?php echo $encontrado->getNombre(); ?>";
 		document.getElementById('curp').value = "<?php echo $encontrado->getCurp(); ?>";
@@ -135,9 +135,9 @@
 		/* returnedValue almacena el valor que devolvio el archivo PHP */
 		if (returnedValue == "OK" ){
 			if ( modify ){
-				alert("Usuario editado correctamente");
+				alert("Empleado editado correctamente");
 			}else{
-				alert("Usuario agregado correctamente");
+				alert("Empleado agregado correctamente");
 			}
 			window.location = "./GestionEmpleado.php";
 		}
@@ -147,10 +147,13 @@
 		else if ( returnedValue == "MISSMATCH_PASSWORD"){
 			alert("Las contraseñas no coinciden");
 		}
+		else if ( returnedValue == "ID_ALREADY_USED"){
+			alert("El empleado con curp " + document.getElementById('curp').value + " ya esta registrado");
+		}
 		else if ( returnedValue == "INPUT_PROBLEM"){
 			alert("Datos con formato inválido");
 		} else {
-			alert ("Error desconocido D:");
+			alert ("Error desconocido :(");
 		}
 	}
 	
