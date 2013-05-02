@@ -26,19 +26,18 @@
             <nav>
                 <div class="button" onclick="redirect('GestionEmpleado.php');"><img src="../img/archive.png"  alt="Icono" class="img-icon" />Gestión Empleados</div>
                 <div class="button" onclick="redirect('GestionProducto.php');"><img src="../img/configuration2.png" alt="Icono" class="img-icon" />Gestión Productos</div>
-               	<div class="button" onclick="redirect('GestionReceta.php');"><img src="../img/note.png"  alt="Icono" class="img-icon" />Gestión Recetas</div>
-   				<div class="button" onclick="redirect('Reportes.php');"><img src="../img/notepad.png"  alt="Icono" class="img-icon" />Solicitar Reporte</div>
+               	<div class="selected-button" onclick="redirect('GestionReceta.php');"><img src="../img/note.png"  alt="Icono" class="img-icon" />Gestión Recetas</div>
             </nav>
             <div id="all-content">
 			<h2 id="titulo">Ver Receta</h2>
 			<div id="content">
 				
-				<table id='table-content'>
+				<table id='table-content' style="padding-left:30px;">
 						<tr class='tr-header'>
-							<td>idMateriaPrima</td>
-							<td>Nombre</td>
-							<td>Cantidad</td>
-							<td>Unidad</td>
+							<td style='width:70px;'>ID</td>
+							<td style='width:250px;'>Nombre del ingrediente</td>
+							<td style='width:90px;'>Cantidad</td>
+							<td style='width:70px;'>Unidad</td>
 						</tr>
 				<?php
 					
@@ -74,7 +73,7 @@
 			
         </div>
         </center>
-        <footer>Elaborado por nosotros(C) 2013</footer>
+        <?php include("../php/footer.php"); ?>
     </body>   
 </html>
 <script type="text/javascript">

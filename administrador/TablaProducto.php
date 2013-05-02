@@ -54,7 +54,7 @@
 				<td>".$nombre."</td>
 				<td>".toMoney($precio)."</td>
 				<td class='opc'><img src='../img/pencil.png' onclick='modificarProducto(\"".$id."\")' alt='Modificar' class='clickable'/></td>
-				<td class='opc'><img src='../img/less.png'   onclick='eliminarProducto(\"".$id."\")' alt='Eliminar' class='clickable'/></td>
+				<td class='opc'><img src='../img/less.png'   onclick='eliminarProducto(\"".$id."\",\"".$nombre."\")' alt='Eliminar' class='clickable'/></td>
 			</tr>");
 		}
 	}	

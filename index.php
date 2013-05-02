@@ -24,7 +24,7 @@
 		<form method="post" action="login.php" class="login">
 			<p>
 				<label for="login">Usuario:</label>
-				<input type="text" name="usuario" placeholder="Ingrese aquí su RFC" />
+				<input type="text" name="usuario" placeholder="Ingrese aquí su CURP" />
 			</p>
 			<p>
 				<label for="password">Contraseña:</label>

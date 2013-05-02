@@ -14,8 +14,8 @@
 ?>
 <table id='table-content'>
 	<tr class='tr-header'>
-		<td>idProducto</td>
-		<td>Nombre</td>
+		<td style='width:70px;'>ID</td>
+		<td style='width:250px;'>Nombre del producto</td>
 		<td class='opc'> </td>
 		<td class='opc'> </td>
 	</tr>
