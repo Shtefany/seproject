@@ -155,7 +155,7 @@
 		else if ( returnedValue == "INPUT_PROBLEM"){
 			alert("Datos con formato inválido");
 		} else {
-			alert ("Error al intentar agregar el producto "+ returnedValue);
+			alert (returnedValue);
 		}
 	}
 </script>

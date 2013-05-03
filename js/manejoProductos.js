@@ -135,7 +135,7 @@ function AddMP()
 		}
 		else
 		{
-			alert("El ingrediente ya esta en la lista");
+			alert("El ingrediente ya está en la lista");
 		}
 	}	
 }
