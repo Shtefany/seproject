@@ -16,18 +16,13 @@
             <?php include('Menu.php');?> 
 			<!-- Divisor del contenido de la pagina -->
             <div id="all-content">
-				<br/>
+				
                 <!--<div class="titulo">GESTIÓN DE VENTAS</div>-->
-                <div id="AV">
-                <img src="../img/RVenta.png" alt="Registrar Venta" width="120" height="30" usemap="#map5"/>
-    				<map name="map5" id="map5">
-		            	<area shape="rect" coords="0,0,120,30" alt="shape" title= "Registrar Venta" href="Registrar_Venta.php"/>
-		            </map></div>
+                <div class="box">
+                    <div id="AV" class="form-button" onClick="window.location ='Registrar_Venta.php'">Registar Venta</div>
 		            <input type="text" id="buscar" name="buscar" placeholder = "Buscar Venta" class="searchBar" onChange="onClickBusqueda();"/>
-					<!--<div id="busc"><img src="../img/busc.png" class="img-buscar"  alt="Buscar" onClick="onClickBusqueda();"/></div>-->
-    			    <div id="tablaVenta">
-						<?php include("TablaVentas.php"); ?>
-					</div>
+			   </div>
+    			   <div id="tablaVenta"><?php include("TablaVentas.php"); ?></div>
 				</div>
     			
             </div>  

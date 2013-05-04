@@ -1,5 +1,5 @@
 <table id='table-content'>
-	<tr class='tr-header'>
+	<tr class='tr-headerv'>
 		<th>Lote</th>
 		<th>Producto</th>
 		<th>Precio</th>
@@ -25,7 +25,7 @@
 		$RegistrosAEmpezar=0;
 		$PagAct=1;}	*/
 	if ( mysql_num_rows($result) < 1){
-		echo ("<tr class='tr-cont'>
+		echo ("<tr class='tr-contv'>
 			   <td colspan='4'><center>No se encontraron resultados</center></td></tr>");
 	}else{	
 		/* Agrega los resultados */
@@ -34,7 +34,7 @@
 			$Lote = $fila['Lote'];	
 			$Producto = $fila['Producto'];
 			$Precio = $fila['Precio'];
-			echo ("<tr class='tr-cont' id='".$id."' name='".$id."'>
+			echo ("<tr class='tr-contv' id='".$id."' name='".$id."'>
 				<td>".$Lote."</td>
 				<td>".$Produco."</td>
 				<td>".$Precio."</td>

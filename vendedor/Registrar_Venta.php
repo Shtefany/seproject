@@ -40,7 +40,7 @@
                     <div id="cliente1"class="box">
                        <?php include("SelectClie.php"); ?>
                     </div> 
-                    <div id="Boton1"><input type="button" name="abrir" value="ABRIR VENTA" onClick="agregarVenta()"></div>
+                    <div id="Boton1"><input type="button" name="abrir" value="Abrir Venta" onClick="agregarVenta()"></div>
                     <div id="articulos" class="texto">ARTICULOS</div>
                     <div id="linea"></div>
                     <div id="producto" class="texto">PRODUCTO:</div>
@@ -59,8 +59,8 @@
                     	<?php include("TablaARti.php"); ?>
                     </div>     
                     
-                    <div id="boton"><input type="button" name="cerrar" value="CERRAR VENTA" onClick=""></div>
-                    <div id="boton2"><input type="button" value="CANCELAR" onClick="cancelar()"></div>  
+                    <div id="boton"><input type="button" name="cerrar" value="Cerrar Venta" onClick=""></div>
+                    <div id="boton2"><input type="button" value="Cancelar" onClick="cancelar()"></div>  
                   </form>
                 </div>
             </div>    

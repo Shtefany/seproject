@@ -1,5 +1,5 @@
 <table id='table-content'>
-	<tr class='tr-header'>
+	<tr class='tr-headerv'>
 		<th>RFC</th>
 		<th>Nombre</th>
 		<th>Tel&eacute;fono</th>
@@ -31,7 +31,7 @@
 	// A�ade parametros de b�squeda
 	$result = $db->executeQuery($ry);	
 	if ( mysql_num_rows($result) < 1){
-		echo ("<tr class='tr-cont'>
+		echo ("<tr class='tr-contv'>
 			   <td colspan='7'><center>No se encontraron resultados</center></td></tr>");
 	}else{	
 		/* Agrega los resultados */
@@ -45,7 +45,7 @@
 			$estado= $fila['Estado'];
 			if($estado!="Eliminado")
 			{
-			echo ("<tr class='tr-cont' id='".$id."' name='".$id."'>
+			echo ("<tr class='tr-contv' id='".$id."' name='".$id."'>
 				<td>".$id."</td>
 				<td>".$nombre."</td>
 				<td>".$telefono."</td>
@@ -54,7 +54,7 @@
 				<td class='opc'><img src='../img/pencil.png' onclick='modificarCliente(\"".$id."\")' alt='Modificar' title='Modificar' class='clickable'/></td>
 				<td class='opc'><img src='../img/less.png'   onclick='eliminarCliente(\"".$id."\")' alt='Eliminar' title='Eliminar' class='clickable'/></td>
 			</tr>");}
-			else{echo ("<tr class='tr-cont' id='".$id."' name='".$id."'>
+			else{echo ("<tr class='tr-contv' id='".$id."' name='".$id."'>
 				<td>".$id."</td>
 				<td>".$nombre."</td>
 				<td>".$telefono."</td>
@@ -70,11 +70,11 @@
 		$Res=$NroRegistros%$RegistrosAMostrar;
 		if($Res>0) $PagUlt=floor($PagUlt)+1;
 		echo '<div id="Paginacion">';
-		echo "<a class='clickable' onclick=\"Pagina('1')\">Primero </a>";	
-		if($PagAct>1) echo "<a class='clickable'  onclick=\"Pagina('$PagAnt')\"> Anterior</a>";
-		echo "<strong> Pagina ".$PagAct."/".$PagUlt."</strong>";
-		if($PagAct<$PagUlt)  echo " <a class='clickable'  onclick=\"Pagina('$PagSig')\"> Siguiente </a> ";
-		echo "<a class='clickable'  onclick=\"Pagina('$PagUlt')\"> Ultimo</a>";
+		echo "<u><a class='click' onclick=\"Pagina('1')\">Primero </a></u>";	
+		if($PagAct>1) echo "&nbsp;<u><a class='click'  onclick=\"Pagina('$PagAnt')\"> Anterior</a></u>";
+		echo "&nbsp;<strong> Pagina ".$PagAct."/".$PagUlt."</strong>";
+		if($PagAct<$PagUlt)  echo "&nbsp;<u> <a class='click'  onclick=\"Pagina('$PagSig')\"> Siguiente </a> </u>";
+		echo "&nbsp;<u><a class='click'  onclick=\"Pagina('$PagUlt')\"> Ultimo</a></u>";
 		echo "</div>";
 	}
 	

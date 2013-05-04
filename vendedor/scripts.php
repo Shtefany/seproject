@@ -1,5 +1,6 @@
 
         <link rel="stylesheet" type="text/css" href="../css/ventas.css" />
+        <link rel="stylesheet" type="text/css" href="../css/mainStyle.css" />
         <script language="JavaScript" src="../js/valida_MV.js"></script>	
         <script language="JavaScript" src="../valida_reporte.js"></script>
         <script language="JavaScript" src="../js/valida_RV.js"></script>
@@ -11,7 +12,8 @@
 		<script type="text/javascript" src="../js/validaciones.js"></script>
 		<script type="text/javascript" src="../js/ajax.js"></script>
 		<script type="text/javascript" src="../js/tablas.js"></script>
-		
+		<script type="text/javascript" src="../js/mensajes.js"></script>
+		<script type="text/javascript" src="../js/navigation.js"></script>
 		<script type="text/javascript">	
 		window.onload = resizeWindow;
 		    window.onresize = resizeWindow;

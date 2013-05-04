@@ -26,7 +26,7 @@
                 <table>
 				<tr>
 				<td><div id="dvrfc" class="divform">RFC:</div></td>
-				<td><input type="text" id="RFC" class="tb" name="RFC" maxlength="13" placeholder="RFC" onblur="valida(this.value,'mrfc','RFC');"/></td>
+				<td><input type="text" id="RFC" class="tb" name="RFC" maxlength="13" placeholder="AAAA880326XXX" onblur="valida(this.value,'mrfc','RFC');"/></td>
 				<td><span id="mrfc"></span></td>
 				</tr>
 				<tr>
@@ -36,11 +36,11 @@
 				</tr>
 				<tr>
 				<td><div id="dvtel" class="divform">Tel&eacute;fono Fijo:</div></td>
-				<td><input type="text" id="tel" class="tb" name="tel" maxlength="11" placeholder="Teléfono" onblur="valida(this.value,'mtel','telefono');"/></td>
+				<td><input type="text" id="tel" class="tb" name="tel" maxlength="11" placeholder="55-55-55-55" onblur="valida(this.value,'mtel','telefono');"/></td>
 				<td><span id="mtel"></span></td>
 				</tr>
 				<td><div id="dvema" class="divform">E-mail:</div></td>
-				<td><input type="text" id="ema" class="tb" name="ema" placeholder="E-mail" onblur="valida(this.value,'mema','email');"/></td>
+				<td><input type="text" id="ema" class="tb" name="ema" placeholder="nombre@ejemplo.com" onblur="valida(this.value,'mema','email');"/></td>
 				<td><span id="mema"></span></td>
 				</tr>
 				<tr>
@@ -50,11 +50,8 @@
 				</tr>
 				
 				</table>
-                <!--<div id="dvtel" class="divform">Tel&eacute;fono:<input type="text" id="tel" class="tb" name="tel" placeholder="Teléfono"/></div>
-                <div id="dvema" class="divform">E-mail:<input type="text" id="ema" class="tb" name="ema" placeholder="E-mail"/></div>
-                <div id="dvdir" class="divform">Direcci&oacute;n:</br><textarea id="dir" class="ta" name="dir" rows="10" cols="10" placeholder="Dirección"></textarea></div>-->
-                <div id="acept" class="divform" onClick="agregarCliente();"><center>ACEPTAR</center></div>
-				<div id="cancel" class="divform" onClick="window.location ='Gestionc.php'"><center>CANCELAR</center></div>
+                <div id="acept" class="form-button" onClick="agregarCliente();"><center>Aceptar</center></div>
+				<div id="cancel" class="form-button" onClick="window.location ='Gestionc.php'"><center>Cancelar</center></div>
 				
                 </form>
                 </div>

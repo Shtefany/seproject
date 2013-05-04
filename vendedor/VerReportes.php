@@ -157,11 +157,13 @@
 				
                 
               <div id="VR">
-              	<object data="reporte.pdf" type="application/pdf" width="800" height="500">	</object>
+              	<object data="reporte.pdf" type="application/pdf" width="800" height="450">	</object>
 			  </div>	
                 	
                 </div>
-                <div id="boton" class="divform" onClick="window.location ='Reportes.php'"><center>ACEPTAR</center></div>
+                <div id="aceptar" class="form-button" onClick="window.location ='Reportes.php'"><center>Aceptar</center></div>
+				
+                
             </div>
 			
     </body>   

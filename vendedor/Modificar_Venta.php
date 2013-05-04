@@ -60,11 +60,11 @@
                     <div id="edo1"class="box">
                        <select name="estados"><option>Elige una opci&oacute;n</option><option>Todo</option><option>Devuelto</option><option>Reportado</option></select>
                     </div> 
-                    <div id="agregar"><input type="button" name="agregar" value="AGREGAR ARTICULO" onClick="valida_articulo()"></div>
+                    <div id="agregar"><input type="button" name="agregar" value="Agregar Articulo" onClick="valida_articulo()"></div>
                     
                           
-                    <div id="boton"><input type="button" name="cerrar" value="ACEPTAR" onClick="valida_venta()"></div>
-                    <div id="boton2"><input type="button"  value="CANCELAR" onClick="cancelar()"></div>  
+                    <div id="boton"><input type="button" name="cerrar" value="Aceptar" onClick="valida_venta()"></div>
+                    <div id="boton2"><input type="button"  value="Cancelar" onClick="cancelar()"></div>  
                   </form>
                 </div>
             </div>

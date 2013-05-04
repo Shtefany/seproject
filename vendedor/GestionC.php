@@ -14,22 +14,17 @@
     <?php include('header.php');?>   
         <div id="mainDiv">
 		<!-- Aquí se coloca el menú -->
-            <?php include('Menu.php');?> 
+		<?php include('Menu.php');?>
+            <!--<div id="mainDiv">
 			<!-- Divisor del contenido de la pagina -->
            <div id="all-content">
-				<br/>
-                <!--<div class="titulo">GESTIÓN DE VENTAS</div>-->
-                <div id="AV">
-                	<img src="../img/RCliente.png" alt="Registrar Cliente" width="120" height="30" usemap="#map5"/>
-    				<map name="map5" id="map5">
-		            	<area shape="rect" coords="0,0,120,30" alt="shape" title= "Registrar Cliente" href="RC.php"/>
-		            </map></div>
-		            <input type="text" id="buscar" name="buscar" placeholder = "Buscar Cliente" class="searchBar" onChange="onClickBusqueda();"/>
-					<!--<div id="busc"><img src="../img/busc.png" class="img-buscar"  alt="Buscar" onClick="onClickBusqueda();"/></div>busca-->
-					<div id="tablaCliente">
-						<?php include("TablaClientes.php"); ?>
-					</div>
-         </div>  </div>
+				<div class="box">
+				<div id="AC" class="form-button" onClick="window.location ='RC.php'">Registar Cliente</div>
+			        <input type="text" id="buscar" name="buscar" placeholder = "Buscar Cliente" class="searchBar" onChange="onClickBusqueda();"/>
+				</div>
+				<div id="tablaCliente"><?php include("TablaClientes.php"); ?></div>
+         </div>  
+         </div>
         
        
     </body>   
@@ -48,14 +43,14 @@
 	function eliminarCliente(id){
 		if ( confirm("¿Seguro que desea eliminar al cliente con RFC " + id +"?") ){
 			sendPetitionQuery("EliminaCliente.php?id=" + id );
-			alert("Cliente eliminado");
+			alert("Empleado eliminado");
 			loadTable();
 		}
 	}
 	function recuperarCliente(id){
 		if ( confirm("¿Seguro que desea recuperar al cliente con RFC " + id +"?") ){
 			sendPetitionQuery("RecuperarCliente.php?id=" + id );
-			alert("Cliente Recuperado");
+			alert("Empleado Recuperado");
 			loadTable();
 		}
 	}

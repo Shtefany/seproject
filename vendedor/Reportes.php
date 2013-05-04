@@ -53,9 +53,9 @@
                        <select name="estados"><option value='0'>Todo</option><option value="Entregado">Entregado</option><option value="Cancelada">Cancelada</option><option value="null">En espera</option></select>
                     </div> -->
                                
-                    <div id="boton" type="submit"><input type="submit" value="ACEPTAR"></div>
+                    <div id="aceptar" type="submit"><input type="submit" value="Aceptar"></div>
                   
-                    <div id="boton2"><input type="button" value="CANCELAR" onClick="window.location ='Index.php'"></div>  
+                    <div id="cancel"><input type="button"  value="Cancelar" onClick="window.location ='Index.php'"></div>  
                   </form>
                 </div>
             </div>
