@@ -7,7 +7,7 @@ if ( !defined("__WEBSESSION__") ){
 
 		private $empleado;
 		private $sesion_activa;
-		private $error;
+		private $errors = array();
 		
 		public function __construct()
 		{
@@ -20,9 +20,7 @@ if ( !defined("__WEBSESSION__") ){
 					if ( $login != false ){
 						$this->empleado = $login;
 						$this->sesion_activa = true;
-						$this->error = NULL;
 					}else{
-						$this->error = "USER_NOT_FOUND";
 						$this->empleado = NULL;
 						$this->sesion_activa = false;
 					}	
@@ -38,10 +36,6 @@ if ( !defined("__WEBSESSION__") ){
 		public function getEmpleado()
 		{
 			return $this->empleado;
-		}
-		
-		public function getError(){
-			return $this->error;
 		}
 		
 		public function redirect(){

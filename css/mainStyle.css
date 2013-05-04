@@ -1,22 +1,7 @@
-﻿/*
-*		mainStyle.css
-*		Ultima modificacion: 2013-05-01
-*/
-
-/*
-*	Definición de nuevos tipos de letra
-*/
-@font-face {
+﻿@font-face {
     font-family: "PT Sans";
     src: url("../fonts/PTS55F.ttf");
 }
-
-body{
-    background-color: #FBFBEF; 
-    font-family: "PT Sans";
-	
-}
-
 h1{
 	font-size: 23px;
 }
@@ -26,13 +11,11 @@ h2{
 p{
 	font-size: 12px;
 }
-
-.clickable{
-	cursor: pointer;
+body{
+    background-color: #FBFBEF; 
+    font-family: "PT Sans";
+	
 }
-
-/* Elementos del header */
-
 #header{
     margin: 30px;
     height: 50px;
@@ -51,12 +34,6 @@ p{
     margin-left: 20px;
     cursor: pointer;
 }
-
-.img-header-nc{
-    height: 30px;
-    margin-left: 20px;
-}
-
 .img-banner{
     height: 50px;
 }
@@ -66,9 +43,11 @@ p{
     margin-left: 10px;
     display: inline-block;
 }
-
-/* Contenido */
-
+.img-buscar{
+	height: 20px;
+	display:inline-block;
+	cursor:pointer
+}
 #mainDiv{
     background-color: #FBFBEF;
     width: 1000px;    
@@ -165,12 +144,11 @@ tbody
 }
 
 #table-content{
+	width: 650px; 
 	margin-left: 10px;
-    margin-top: 30px;  
-    margin-bottom: 30px;
+    margin-top: 60px;  
 	
 }	
-
 .tr-header{
 	padding: 3px;
 	background-color:#FBFBEF;
@@ -218,23 +196,13 @@ ul.sub-level {
     margin-bottom: 10px
 }
 
-/*
-*	Barra de búsqueda
-*/
-
-.img-buscar{
-	height: 20px;
-	display:inline-block;
-	cursor:pointer
+.clickable{
+	cursor: pointer;
 }
 
 .searchBar{
 	width: 100px;
 }
-
-/*
-*		Estilo de las notificaciones
-*/
 
 #msgInbox{
 	display: none;
@@ -250,57 +218,17 @@ ul.sub-level {
 	position:absolute;
 	left: 0px;
 	top:  0px;
+	background-image: url(../img/background.png);
 	height: 200px;
 	width: 400px;
-	overflow-y: auto;
-	overflow-x: hidden;
 }
 
 #inbox{
-	position: absolute;
-	left: 400px;
-	width: 620px;
-	height: 500px;
-	top: 80px;
-	border: 1px solid black;
-	background-color: white;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-
-.detalleCC{
-	display: none;
-	position: fixed;
+	position: relative;
 	left: 400px;
 	width: 600px;
-	height: 500px;
-	top: 80px;
+	height: 400px;
+	top: 100px;
 	border: 1px solid black;
 	background-color: white;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-
-#sendMessage{
-	display: none;
-	position:absolute;
-	left: 0px;
-	top:  0px;
-	height: 200px;
-	width: 400px;
-	
-}
-
-.close{
-	position: fixed;
-	left: 950px;
-    top: 85px;  
-	width: 20px;
-	cursor: pointer;
-}
-
-/* Tabla para los formularios */
-
-.form-table{
-	padding-left: 30px;
 }
