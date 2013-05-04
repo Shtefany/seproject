@@ -29,7 +29,6 @@ if ( !defined("__VALIDATIONS__") ){
 				return false; 
 			} 
 		} 
-		
 		public static function validaCURP($string){
 			if ( strlen($string) != 18 ) return false;
 			$valor = str_replace("-", "", $string); 
