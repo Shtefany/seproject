@@ -13,14 +13,12 @@
         <center>
         <div id="mainDiv">
             <nav>
+<!--            
                 <div class="button" onclick="redirect('ConsultarIngredientes.php');">
                 	<img src="../img/search.png" alt="Icono" class="img-icon" />
                     	Consultar Disponibilidad de Ingredientes
 				</div>
-                <div class="button" onclick="redirect('ConsultarPedidos.php');">
-                	<img src="../img/clock.png"  alt="Icono" class="img-icon" />
-                    	Consultar Pedidos en Espera
-				</div>
+-->                
                 <div class="button" onclick="redirect('CrearReporte.php');">
                 	<img src="../img/notepad.png"  alt="Icono" class="img-icon" />
                     	Crear Reporte
@@ -32,7 +30,11 @@
                 <div class="selected-button" onclick="redirect('GestionarLotes.php');">
                 	<img src="../img/note.png"  alt="Icono" class="img-icon" />
                     	Gestión de Lotes
-				</div>                                
+				</div>              
+                <div class="button" onclick="redirect('ConsultarPedidos.php');">
+                	<img src="../img/clock.png"  alt="Icono" class="img-icon" />
+                    	Gestión de Pedidos
+				</div>                                  
             </nav>
             <div id="all-content">				
 				<div id="content">
@@ -42,6 +44,7 @@
                         class="searchBar" style="width:250px;" />
                         <img src="../img/busc.png" class="img-buscar" alt="Buscar" 
                         onClick="onClickBusqueda();" />
+                        <img src="../img/help.png" class="clickable" alt="ayuda" onClick="ayudaBusqueda();" />
                     </div><!--box-->
                     <div id="tablaLote" class="box">
                     	<?php include("TablaLotes.php"); ?>
@@ -55,6 +58,12 @@
 </html>
 <?php include("scripts.php"); ?>
 <script type="text/javascript">
+	
+	function ayudaBusqueda(){
+		alert("Debes ingresar el # de Lote.\n" + 
+		"Para volver debes borrar el texto ingresado en el campo de busqueda!");
+	}
+	
 	/* Genera la tabla de empleados */
 	function onClickBusqueda(){
 		loadTable();

@@ -49,14 +49,12 @@
         <center>
         <div id="mainDiv">
             <nav>
+<!--            
                 <div class="button" onclick="redirect('ConsultarIngredientes.php');">
                 	<img src="../img/search.png" alt="Icono" class="img-icon" />
                     	Consultar Disponibilidad de Ingredientes
 				</div>
-                <div class="button" onclick="redirect('ConsultarPedidos.php');">
-                	<img src="../img/clock.png"  alt="Icono" class="img-icon" />
-                    	Consultar Pedidos en Espera
-				</div>
+-->                
                 <div class="selected-button" onclick="redirect('CrearReporte.php');">
                 	<img src="../img/notepad.png"  alt="Icono" class="img-icon" />
                     	Crear Reporte
@@ -68,7 +66,11 @@
                 <div class="button" onclick="redirect('GestionarLotes.php');">
                 	<img src="../img/note.png"  alt="Icono" class="img-icon" />
                     	Gestión de Lotes
-				</div>                                
+				</div>      
+                <div class="button" onclick="redirect('ConsultarPedidos.php');">
+                	<img src="../img/clock.png"  alt="Icono" class="img-icon" />
+                    	Gestión de Pedidos
+				</div>                                                                   
             </nav>
             <div id="all-content">				
                 <h2>Creación de Reportes de Producción</h2>                

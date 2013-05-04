@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-04-2013 a las 00:45:22
+-- Tiempo de generación: 04-05-2013 a las 12:47:46
 -- Versión del servidor: 5.5.8
 -- Versión de PHP: 5.3.5
 
@@ -28,19 +28,23 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE IF NOT EXISTS `lote` (
   `noLote` int(11) NOT NULL AUTO_INCREMENT,
   `productoAsociado` varchar(50) NOT NULL,
-  `lineaProduccion` enum('1','2','3') NOT NULL,
+  `cantidadProducto` int(11) NOT NULL,
   `fechaElaboracion` date NOT NULL,
   `fechaCaducidad` date NOT NULL,
   PRIMARY KEY (`noLote`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=66 ;
 
 --
 -- Volcar la base de datos para la tabla `lote`
 --
 
-INSERT INTO `lote` (`noLote`, `productoAsociado`, `lineaProduccion`, `fechaElaboracion`, `fechaCaducidad`) VALUES
-(1, 'Emperador Chocolate', '1', '2013-01-01', '2014-01-01'),
-(2, 'Emperador Nuez', '2', '2013-02-01', '2014-02-01'),
-(3, 'Galletas de Avena', '3', '2013-03-01', '2014-03-01'),
-(9, 'Oreo', '1', '2013-01-03', '2014-01-03'),
-(11, 'Emperador Vainilla', '2', '2013-02-01', '2014-02-01');
+INSERT INTO `lote` (`noLote`, `productoAsociado`, `cantidadProducto`, `fechaElaboracion`, `fechaCaducidad`) VALUES
+(1, '3', 3000, '2014-04-01', '2013-08-22'),
+(2, '2', 2000, '2013-04-02', '2014-04-02'),
+(3, '3', 4000, '2013-04-03', '2014-04-03'),
+(9, '4', 3000, '2013-04-04', '2014-04-04'),
+(10, '6', 3000, '2013-04-17', '2013-07-31'),
+(62, '2', 2000, '2013-05-15', '2013-08-27'),
+(63, '6', 2000, '2013-05-16', '2013-08-21'),
+(64, '6', 2000, '2013-05-16', '2013-08-21'),
+(65, '4', 4000, '2013-05-22', '2013-08-27');

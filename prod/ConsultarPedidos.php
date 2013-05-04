@@ -69,14 +69,12 @@
         <center>
         <div id="mainDiv">
             <nav>
+<!--            
                 <div class="button" onclick="redirect('ConsultarIngredientes.php');">
                 	<img src="../img/search.png" alt="Icono" class="img-icon" />
                     	Consultar Disponibilidad de Ingredientes
 				</div>
-                <div class="selected-button" onclick="redirect('ConsultarPedidos.php');">
-                	<img src="../img/clock.png"  alt="Icono" class="img-icon" />
-                    	Consultar Pedidos en Espera
-				</div>
+-->                
                 <div class="button" onclick="redirect('CrearReporte.php');">
                 	<img src="../img/notepad.png"  alt="Icono" class="img-icon" />
                     	Crear Reporte
@@ -89,36 +87,63 @@
                 	<img src="../img/note.png"  alt="Icono" class="img-icon" />
                     	Gestión de Lotes
 				</div>                                
+                <div class="selected-button" onclick="redirect('ConsultarPedidos.php');">
+                	<img src="../img/clock.png"  alt="Icono" class="img-icon" />
+                    	Gestión de Pedidos
+				</div>                
             </nav>
-            <div id="all-content">				
-                <h2>Consultar Pedidos en Espera</h2>                
-                <p>
-                	Selecciona un parámetro de búsqueda
-                </p>
-                <p>
-                	<select name="parampedido" id="tipopedido">
-                    	<option value="1" >Pedidos Pendientes</option>
-                    	<option value="2">Pedidos para Cambio</option>                     
-                    </select>
-                </p>
-                <p id="fventap">
-                	Ingresa la fecha de Venta <br />
-                    <input type="text" name="fechaVenta" id="fechaVenta" placeholder="Fecha de Venta" />
-                </p>
-                <button id="FormSubmit1" onClick="consultarPendientes()" class="form-button">
-                	Consultar Pedidos
-                </button>
-                <button id="FormSubmit" class="form-button">
-                	Consultar Pedidos
-                </button>
-                <div id="validar"></div>
-                <div id="proceso"></div>
-                <div id="resultados1"></div>
-                <div id="resultados"></div>
-			</div>
+            <div id="all-content">	
+            	<div id="content">
+                	<h2>Gestionar Pedidos</h2>
+                    <div class="box">
+                        <input type="text" id="buscar" name="buscar" placeholder="Ingresa el # del pedido" 
+                        class="searchBar" style="width:250px;" />
+                        <img src="../img/busc.png" class="img-buscar" alt="Buscar" 
+                        onClick="onClickBusqueda();" />
+                        <img src="../img/help.png" class="clickable" alt="ayuda" onClick="ayudaBusqueda();" />
+                    </div><!--box-->
+                    <div id="tablaPedido" class="box">
+                    	<?php include("TablaPedidos.php"); ?>
+                    </div><!--tablaLinea-->                    
+                </div><!--content-->
+            </div><!--all-content-->		
+
         </div>
         </center>
         <footer>Elaborado por nosotros(C) 2013</footer>
     </body>   
 </html>
 <?php include("scripts.php"); ?>
+<script type="text/javascript">
+	/*Alert para la ayuda en la busqueda*/
+	function ayudaBusqueda(){
+		alert("Debes ingresar el # de Folio.\nPara volver borra el texto del campo de busqueda!");
+	}
+	
+	/* Genera la tabla de pedidos */
+	function onClickBusqueda(){
+		loadTable();
+	}
+	/*Carga la tabla de pedido de acuerdo al filtro de busqueda*/
+	function loadTable(){
+		filtro = document.getElementById('buscar').value;
+		sendPetitionSync("TablaPedidos.php?search=" + filtro , "tablaPedido", document);
+		rePaint();
+	}		
+	
+	/*modificar la producción*/
+	function enviarProduccion(folio){
+		redirect("AsignarLinea.php?folio=" + folio);
+		//alert("Se enviara a producción");
+	}
+	
+	/*Muestra el detalle del Lote asociado*/
+	function detalleLote(nolote, producto, cantidad, elaboracion, caducidad){
+		alert("Detalle del Lote\n\n" + 
+		"Numero de lote: " + nolote + 
+		"\nProducto Asociado: " + producto + 
+		"\nCantidad de Producto: " + cantidad + " Unidades" +
+		"\nFecha de Elaboración: " + elaboracion +
+		"\nFecha de Caducidad: " + caducidad);
+	}	
+</script>

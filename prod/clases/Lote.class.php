@@ -10,14 +10,15 @@
 			private $fechaElaboracion;
 			private $fechaCaducidad;
 			private $linea;
+			private $cantidad;
 			
-			public function __construct($nolote, $productoAsociado, $fechaElaboracion, $fechaCaducidad, 
-			$linea){
+			public function __construct($nolote, $productoAsociado, $cantidad, $fechaElaboracion,
+			 $fechaCaducidad){
 				$this->nolote = $nolote;
 				$this->productoAsociado = $productoAsociado;
 				$this->fechaElaboracion = $fechaElaboracion;
 				$this->fechaCaducidad = $fechaCaducidad;
-				$this->linea = $linea;
+				$this->cantidad = $cantidad;
 			}//construct
 			
 			public function getProducto(){
@@ -36,21 +37,26 @@
 				return $this->linea;
 			}
 			
-			public static function agregar($producto, $linea, $elaboracion, $caducidad){
+			public function getCantidad(){
+				return $this->cantidad;
+			}			
+			
+			public static function agregar($producto, $cantidad, $elaboracion, $caducidad){
 				$db = new DataConnection();
-				$qry = "INSERT INTO Lote(noLote, productoAsociado, lineaProduccion, fechaElaboracion,
+				$qry = "INSERT INTO Lote(noLote, productoAsociado, cantidadProducto, fechaElaboracion,
 				fechaCaducidad) VALUES ('0', 
-				'".$producto."', '".$linea."', '".$elaboracion."', '".$caducidad."');";
+				'".$producto."', '".$cantidad."', '".$elaboracion."', '".$caducidad."');";
 				if($result = $db->executeQuery($qry)){
 					return true;
 				}
 				return false;
 			}//Agregar
 			
-			public static function modificar($nolote, $producto, $linea, $elaboracion, $caducidad){
+			public static function modificar($nolote, $producto, $cantidad, $elaboracion, 
+			$caducidad){
 				$db = new DataConnection();
-				$qry = "UPDATE lote SET productoAsociado='".$producto."', lineaProduccion = '".$linea."', 
-				fechaElaboracion = '".$elaboracion."', fechaCaducidad = '".$caducidad."' 
+				$qry = "UPDATE lote SET productoAsociado='".$producto."', cantidadProducto = '".$cantidad."', 
+				fechaElaboracion = '".$elaboracion."', fechaCaducidad = '".$caducidad."'
 				WHERE nolote = '".$nolote."';";			
 				if($result = $db->executeQuery($qry)){
 					return true;
@@ -62,8 +68,8 @@
 				$db = new DataConnection();
 				$result = $db->executeQuery("SELECT * FROM lote WHERE noLote='".$nolote."'");
 				if($dato = mysql_fetch_assoc($result)){
-					$lote = new Lote($dato["noLote"], $dato["productoAsociado"], $dato["fechaElaboracion"],
-					$dato["fechaCaducidad"], $dato["lineaProduccion"]);
+					$lote = new Lote($dato["noLote"], $dato["productoAsociado"], $dato["cantidadProducto"],
+					$dato["fechaElaboracion"], $dato["fechaCaducidad"]);
 					return $lote;
 				}
 				return false;
