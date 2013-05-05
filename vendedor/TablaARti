@@ -1,9 +1,5 @@
 <table id='table-content'>
-<<<<<<< HEAD
-	<tr class='tr-headerv'>
-=======
 	<tr class='tr-header'>
->>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 		<th>Lote</th>
 		<th>Producto</th>
 		<th>Precio</th>
@@ -13,7 +9,7 @@
 	include("../php/DataConnection.class.php");
 	include("../php/validations.class.php");
 	//Inpaginacion
-	$db = new DataConnection();
+	$db=new DataConecction();
 	
 	if(isset($_GET['Folio'])){
 		$numFolio=($_GET['Folio']);
@@ -29,27 +25,21 @@
 		$RegistrosAEmpezar=0;
 		$PagAct=1;}	*/
 	if ( mysql_num_rows($result) < 1){
-<<<<<<< HEAD
-		echo ("<tr class='tr-contv'>
-=======
 		echo ("<tr class='tr-cont'>
->>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
-			   <td colspan='4'><center>No se encontraron resultados</center></td></tr>");
+			   <td colspan='7'><center>No se encontraron resultados</center></td></tr>");
 	}else{	
 		/* Agrega los resultados */
 		while($fila = mysql_fetch_array($result))
 		{		
-			$Lote = $fila['Lote'];	
-			$Producto = $fila['Producto'];
-			$Precio = $fila['Precio'];
-<<<<<<< HEAD
-			echo ("<tr class='tr-contv' id='".$id."' name='".$id."'>
-=======
+			$id = $fila['Lote'];	
+			$nombre = $fila['Producto'];
+			$telefono = $fila['Precio'];
 			echo ("<tr class='tr-cont' id='".$id."' name='".$id."'>
->>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
-				<td>".$Lote."</td>
-				<td>".$Produco."</td>
-				<td>".$Precio."</td>
+				<td>".$."</td>
+				<td>".$nombre."</td>
+				<td>".$telefono."</td>
+				<td>".$email."</td>
+				<td>".$direccion."</td>
 				<td class='opc'><img src='../img/less.png'   onclick='eliminarCliente(\"".$id."\")' alt='Eliminar' title='Eliminar' class='clickable'/></td>
 			</tr>");}
 			
@@ -67,7 +57,7 @@
 		if($PagAct<$PagUlt)  echo " <a class='clickable'  onclick=\"Pagina('$PagSig')\"> Siguiente </a> ";
 		echo "<a class='clickable'  onclick=\"Pagina('$PagUlt')\"> Ultimo</a>";
 		echo "</div>";*/
-	//}
+	}
 	
 	//inipag
 			

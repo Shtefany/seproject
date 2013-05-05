@@ -6,13 +6,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="author" content="Ventas"/>
         <title>Registrar Venta</title>
+<<<<<<< HEAD
         <link rel="stylesheet" type="text/css" href="../css/ventas.css" />
         <link rel="stylesheet" type="text/css" href="../css/mainStyle.css" />
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+=======
+        <link rel="stylesheet" type="text/css" href="../css/ventastyle/styleRV.css" />
+         <?php include('scripts.php'); ?> 	
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
     </head>    
     <body>
 	<!-- El header es el mismo para todas las paginas-->
     	<?php include('header.php');?>
+<<<<<<< HEAD
         <center>
         <div id="mainDiv">
 		<!-- Aquí se coloca el menú -->
@@ -21,6 +27,12 @@
 					<div id="GC" class="button" onClick="window.location ='GestionC.php'"><img src="../img/card.png"  alt="Icono" class="img-icon"/>Gestión de Clientes</div>
 					<div id="rep" class="button" onClick="window.location ='Reportes.php'"><img src="../img/notepad.png"  alt="Icono" class="img-icon"/>Crear Reportes</div>
 			</nav>
+=======
+        
+        <div id="mainDiv">
+		<!-- Aquí se coloca el menú -->
+            <?php include('Menu.php');?>
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 			<!-- Divisor del contenido de la pagina -->
             <div id="all-content">
 				<br/>
@@ -45,7 +57,11 @@
                     <div id="cliente1"class="box">
                        <?php include("SelectClie.php"); ?>
                     </div> 
+<<<<<<< HEAD
                     <div id="Boton1"><input type="button" name="abrir" value="Abrir Venta" onClick="agregarVenta()"></div>
+=======
+                    <div id="Boton1"><input type="button" name="abrir" value="ABRIR VENTA" onClick="agregarVenta()"></div>
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
                     <div id="articulos" class="texto">ARTICULOS</div>
                     <div id="linea"></div>
                     <div id="producto" class="texto">PRODUCTO:</div>
@@ -64,6 +80,7 @@
                     	<?php include("TablaARti.php"); ?>
                     </div>     
                     
+<<<<<<< HEAD
                     <div id="boton"><input type="button" name="cerrar" value="Cerrar Venta" onClick=""></div>
                     <div id="boton2"><input type="button" value="Cancelar" onClick="cancelar()"></div>  
                   </form>
@@ -74,6 +91,15 @@
 </html>
 
 <?php include('scripts.php'); ?> 	
+=======
+                    <div id="boton"><input type="button" name="cerrar" value="CERRAR VENTA" onClick=""></div>
+                    <div id="boton2"><input type="button" value="CANCELAR" onClick="cancelar()"></div>  
+                  </form>
+                </div>
+            </div>    
+    </body>   
+</html>
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 <!--<script type="text/javascript" src="jquery-1.4.2.min.js"></script>-->
 <script type="text/javascript">
 	 $(document).ready(function(){

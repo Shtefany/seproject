@@ -1,3 +1,4 @@
+<<<<<<< HEAD
         <script type="text/javascript" src="../js/validaciones.js"></script>
         <script type="text/javascript" src="../js/color.js"></script>
         <script type="text/javascript" src="../js/ventas.js"></script>
@@ -9,6 +10,21 @@
 		<script type="text/javascript" src="../js/tablas.js"></script>
 		<script type="text/javascript" src="../js/mensajes.js"></script>
 		<script type="text/javascript" src="../js/navigation.js"></script>
+=======
+
+        <link rel="stylesheet" type="text/css" href="../css/ventas.css" />
+        <script language="JavaScript" src="../js/valida_MV.js"></script>	
+        <script language="JavaScript" src="../valida_reporte.js"></script>
+        <script language="JavaScript" src="../js/valida_RV.js"></script>
+        <link rel="stylesheet" type="text/css" href="style/jquery-ui.css">
+        <script type="text/javascript" src="../js/jquery-1.5.1.js"></script>
+		<script type="text/javascript" src="../js/jquery.ui.core.js"></script>
+		<script type="text/javascript" src="../js/jquery.ui.widget.js"></script>
+		<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
+		<script type="text/javascript" src="../js/validaciones.js"></script>
+		<script type="text/javascript" src="../js/ajax.js"></script>
+		<script type="text/javascript" src="../js/tablas.js"></script>
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 		
 		<script type="text/javascript">	
 		window.onload = resizeWindow;

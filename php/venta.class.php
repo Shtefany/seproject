@@ -48,11 +48,19 @@ if ( !defined("__VENTA__") ){
 			$row=mysql_fetch_row($aux);
 			if($aux!=0 and $dato["Fecha"]<0 )
 			{
+<<<<<<< HEAD
 				$qry = "INSERT INTO Venta (Fecha,RFC,Fentrega,Estado) VALUES((SELECT CURDATE( )),'".$Cliente."',(SELECT DATE_ADD(MAX(v.Fentrega),INTERVAL 5 Day) FROM venta v ),'En Espera')";
 			}
 			else
 			{
 				$qry = "INSERT INTO Venta (Fecha,RFC,Fentrega,Estado) VALUES((SELECT CURDATE( )),'".$Cliente."',(SELECT DATE_ADD(curdate(),INTERVAL 5 Day)),'En Espera')";
+=======
+				$qry = "INSERT INTO Venta (Fecha,RFC,Fentrega,Estado) VALUES((SELECT CURDATE( )),'".$Cliente."',(SELECT DATE_ADD(MAX(v.Fentrega),INTERVAL 2 Day) FROM venta v ),'En Espera')";
+			}
+			else
+			{
+				$qry = "INSERT INTO Venta (Fecha,RFC,Fentrega,Estado) VALUES((SELECT CURDATE( )),'".$Cliente."',(SELECT DATE_ADD(curdate(),INTERVAL 2 Day)),'En Espera')";
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 			}
 			
 			//INSERT INTO Venta (Fecha,RFC,Fentrega) VALUES((SELECT CURDATE( )),"AECJ880326XXX",(SELECT DATE_ADD(MAX(Fentrega),INTERVAL 5 Day) FROM Venta)) 

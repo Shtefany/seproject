@@ -1,14 +1,23 @@
 function openInbox() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
     document.getElementById("msgInbox").style.display = "block";
     document.getElementById("msgInbox").style.height  = window.innerHeight + "px";
     document.getElementById("msgInbox").style.width = window.innerWidth + "px";
     loadMessages();
+<<<<<<< HEAD
+=======
+
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 }
 
 function closeInbox() {
     document.getElementById("msgInbox").style.display = "none";
 }
 
+<<<<<<< HEAD
 function loadMessagesArchived() {
     sendPetitionSync("../php/inbox.php?archivado=1","messages",document);
 	document.getElementById("banner").innerHTML = "Mensajes archivados";
@@ -32,10 +41,27 @@ function viewDetails(id){
 }
 function loadDetails(id){
 	sendPetitionSync("../php/details.php?id=" + id,"msgDetail",document);
+=======
+function loadMessages() {
+    sendPetitionSync("../php/inbox.php","messages",document);
+}
+
+function viewDetails(){
+	document.getElementById("details").style.display = "block";
+    document.getElementById("details").style.height  = window.innerHeight + "px";
+    document.getElementById("details").style.width = window.innerWidth + "px";
+    loadDetails(idMsg);
+ 
+ 
+}
+function loadDetails(){
+	sendPetitionSync("../php/details.php","msgDetail",document);
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 }
 
 function closeDetails() {
     document.getElementById("details").style.display = "none";
+<<<<<<< HEAD
 }
 
 function sendMsg(){
@@ -82,4 +108,7 @@ function sendMessage(){
 	}else{
 		alert("Error desconocido :(");
 	}	
+=======
+
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 }

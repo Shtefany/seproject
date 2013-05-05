@@ -1,17 +1,30 @@
 <table id='table-content'>
+<<<<<<< HEAD
 	<tr class='tr-headerv'>
+=======
+	<tr class='tr-header'>
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 		<th>RFC</th>
 		<th>Nombre</th>
 		<th>Tel&eacute;fono</th>
 		<th>E-mail</td>
 		<th>Direcci&oacute;n</th>
+<<<<<<< HEAD
 		<th colspan='2'> </th>
+=======
+		<th class='opc'> </th>
+		<th class='opc'> </th>
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 	</tr>
 <?php
 	include("../php/DataConnection.class.php");
 	include("../php/validations.class.php");
 	//Inpaginacion
+<<<<<<< HEAD
     $RegistrosAMostrar=4;
+=======
+    $RegistrosAMostrar=5;
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 	if(isset($_GET['pag'])){
 		$RegistrosAEmpezar=($_GET['pag']-1)*$RegistrosAMostrar;
 		$PagAct=$_GET['pag'];}
@@ -30,7 +43,11 @@
 	// A�ade parametros de b�squeda
 	$result = $db->executeQuery($ry);	
 	if ( mysql_num_rows($result) < 1){
+<<<<<<< HEAD
 		echo ("<tr class='tr-contv'>
+=======
+		echo ("<tr class='tr-cont'>
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 			   <td colspan='7'><center>No se encontraron resultados</center></td></tr>");
 	}else{	
 		/* Agrega los resultados */
@@ -44,22 +61,37 @@
 			$estado= $fila['Estado'];
 			if($estado!="Eliminado")
 			{
+<<<<<<< HEAD
 			echo ("<tr class='tr-contv' id='".$id."' name='".$id."'>
+=======
+			echo ("<tr class='tr-cont' id='".$id."' name='".$id."'>
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 				<td>".$id."</td>
 				<td>".$nombre."</td>
 				<td>".$telefono."</td>
 				<td>".$email."</td>
 				<td>".$direccion."</td>
+<<<<<<< HEAD
 				<td><img src='../img/pencil.png' onclick='modificarCliente(\"".$id."\")' alt='Modificar' title='Modificar' class='clickable'/></td>
 				<td><img src='../img/less.png'   onclick='eliminarCliente(\"".$id."\")' alt='Eliminar' title='Eliminar' class='clickable'/></td>
 			</tr>");}
 			else{echo ("<tr class='tr-contv' id='".$id."' name='".$id."'>
+=======
+				<td class='opc'><img src='../img/pencil.png' onclick='modificarCliente(\"".$id."\")' alt='Modificar' title='Modificar' class='clickable'/></td>
+				<td class='opc'><img src='../img/less.png'   onclick='eliminarCliente(\"".$id."\")' alt='Eliminar' title='Eliminar' class='clickable'/></td>
+			</tr>");}
+			else{echo ("<tr class='tr-cont' id='".$id."' name='".$id."'>
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 				<td>".$id."</td>
 				<td>".$nombre."</td>
 				<td>".$telefono."</td>
 				<td>".$email."</td>
 				<td>".$direccion."</td>
+<<<<<<< HEAD
 				<td colspan='2'><center><img src='../img/ok2.png' onclick='recuperarCliente(\"".$id."\")' alt='Eliminado' title='Recuperar' class='clickable'/></center></td>
+=======
+				<td colspan='2' class='opc'><center><img src='../img/ok2.png' onclick='recuperarCliente(\"".$id."\")' alt='Eliminado' title='Recuperar' class='clickable'/></center></td>
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 			</tr>");}
 		}echo '</table>';
 		$NroRegistros=mysql_num_rows($db->executeQuery($qry));
@@ -69,11 +101,19 @@
 		$Res=$NroRegistros%$RegistrosAMostrar;
 		if($Res>0) $PagUlt=floor($PagUlt)+1;
 		echo '<div id="Paginacion">';
+<<<<<<< HEAD
 		echo "<u><a class='click' onclick=\"Pagina('1')\">Primero </a></u>";	
 		if($PagAct>1) echo "&nbsp;<u><a class='click'  onclick=\"Pagina('$PagAnt')\"> Anterior</a></u>";
 		echo "&nbsp;<strong> Pagina ".$PagAct."/".$PagUlt."</strong>";
 		if($PagAct<$PagUlt)  echo "&nbsp;<u> <a class='click'  onclick=\"Pagina('$PagSig')\"> Siguiente </a> </u>";
 		echo "&nbsp;<u><a class='click'  onclick=\"Pagina('$PagUlt')\"> Ultimo</a></u>";
+=======
+		echo "<a class='clickable' onclick=\"Pagina('1')\">Primero </a>";	
+		if($PagAct>1) echo "<a class='clickable'  onclick=\"Pagina('$PagAnt')\"> Anterior</a>";
+		echo "<strong> Pagina ".$PagAct."/".$PagUlt."</strong>";
+		if($PagAct<$PagUlt)  echo " <a class='clickable'  onclick=\"Pagina('$PagSig')\"> Siguiente </a> ";
+		echo "<a class='clickable'  onclick=\"Pagina('$PagUlt')\"> Ultimo</a>";
+>>>>>>> c522b9af95acb3c0ac9c3e9af9ee9206fa090ab4
 		echo "</div>";
 	}
 	
